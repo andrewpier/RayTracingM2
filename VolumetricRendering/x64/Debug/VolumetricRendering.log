@@ -1,0 +1,29 @@
+﻿  main.cpp
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\Camera.h(19): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\Camera.h(30): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\Camera.h(31): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\Camera.h(32): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\Camera.h(80): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(23): warning C4091: 'typedef ' : ignored on left of 'buffer' when no variable is declared
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(48): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(49): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(50): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(64): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(65): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(66): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(72): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(73): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(74): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(80): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(81): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(82): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(88): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(89): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(90): warning C4244: 'initializing' : conversion from 'const float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\VoxelBuffer.h(132): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+..\main.cpp(45): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+..\main.cpp(86): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+..\main.cpp(121): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+..\main.cpp(122): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+..\main.cpp(123): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+  VolumetricRendering.vcxproj -> C:\Users\PIERAK1\Dropbox\Second Semester\Graphics\VolumetricRendering\x64\Debug\VolumetricRendering.exe

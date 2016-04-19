@@ -1,0 +1,31 @@
+﻿  VolumetricRendering.cpp
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\VoxelBuffer.h(28): warning C4091: 'typedef ' : ignored on left of 'buffer' when no variable is declared
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\VoxelBuffer.h(87): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\VoxelBuffer.h(71): warning C4101: 'loc3' : unreferenced local variable
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\VoxelBuffer.h(71): warning C4101: 'loc1' : unreferenced local variable
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\VoxelBuffer.h(71): warning C4101: 'loc2' : unreferenced local variable
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\Camera.h(19): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\Camera.h(30): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\Camera.h(31): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\Camera.h(32): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\Camera.h(78): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+c:\users\pierak1\dropbox\second semester\graphics\volumetricrendering\volumetricrendering\VolumetricRendering.h(26): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+VolumetricRendering.cpp(29): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(30): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(31): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(50): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(51): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(52): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(82): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(83): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(84): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+VolumetricRendering.cpp(149): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+VolumetricRendering.cpp(149): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+VolumetricRendering.cpp(150): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+VolumetricRendering.cpp(150): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+VolumetricRendering.cpp(151): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+VolumetricRendering.cpp(151): warning C4244: '=' : conversion from 'float' to 'ebmpBYTE', possible loss of data
+VolumetricRendering.cpp(165): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+  Generating code
+  Finished generating code
+  VolumetricRendering.vcxproj -> C:\Users\PIERAK1\Dropbox\Second Semester\Graphics\VolumetricRendering\x64\Release\VolumetricRendering.exe

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\BMP">
+      <UniqueIdentifier>{5a3ad66a-2826-4691-9499-1eeefe9cbd9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Voxel">
+      <UniqueIdentifier>{524edfd2-b0e0-4a8b-9fe6-481ba869748d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\old">
+      <UniqueIdentifier>{717307e0-eeb9-4915-99d7-b2e43d0e2ab5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\new">
+      <UniqueIdentifier>{f026f952-16a2-4088-9a8c-7188961729c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Mine">
+      <UniqueIdentifier>{53eaf099-239c-4c18-adfb-6bc551107aa5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="VolumetricRendering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VoxelBuffer.h">
+      <Filter>Header Files\Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyBMP.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyBMP_BMP.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyBMP_DataStructures.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyBMP_VariousBMPutilities.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="perlin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EasyBMP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vec3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumetricRendering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="perlin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="test1_old.txt">
+      <Filter>Resource Files\old</Filter>
+    </Text>
+    <Text Include="test2_old.txt">
+      <Filter>Resource Files\old</Filter>
+    </Text>
+    <Text Include="test3_old.txt">
+      <Filter>Resource Files\old</Filter>
+    </Text>
+    <Text Include="test3.txt">
+      <Filter>Resource Files\new</Filter>
+    </Text>
+    <Text Include="test2.txt">
+      <Filter>Resource Files\new</Filter>
+    </Text>
+    <Text Include="test1.txt">
+      <Filter>Resource Files\new</Filter>
+    </Text>
+    <Text Include="mine1.txt">
+      <Filter>Resource Files\Mine</Filter>
+    </Text>
+    <Text Include="mine2.txt">
+      <Filter>Resource Files\Mine</Filter>
+    </Text>
+    <Text Include="mine3.txt">
+      <Filter>Resource Files\Mine</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

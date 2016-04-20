@@ -10,7 +10,7 @@
 #include "EasyBMP.h"
 #include "Camera.h"
 #include "VoxelBuffer.h"
-#include "vec.h"
+#include "glm\glm.hpp"
 #include "VolumetricRendering.h"
 using namespace std;
 Camera* cam1;

@@ -12,7 +12,7 @@ then can use the reay generation code to and  camera to produce the image
 #include <fstream>
 #include <string>
 #include <math.h>
-#include "vec.h"
+#include "glm\glm.hpp"
 using std::string;
 using std::ifstream;
 

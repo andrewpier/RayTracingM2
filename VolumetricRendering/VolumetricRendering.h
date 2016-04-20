@@ -9,6 +9,7 @@ This is the Volumetric Rendering header
 */
 
 #include <fstream>
+#include "glm\glm.hpp"
 #include <string>
 #include "VoxelBuffer.h"
 #include "Camera.h"
@@ -17,7 +18,7 @@ This is the Volumetric Rendering header
 #include "EasyBMP.h"
 using std::string;
 using std::ifstream;
-
+using namespace glm;
 
 
 class VolumetricRendering{
@@ -38,6 +39,9 @@ public:
 	void Cloud(float,vec3);
 
 	float VolumetricRendering::getLight(vec3 pos);
+	void Raytrace(vec3 pixelCol, vec3 ray, int depth);
+
+
 	void draw();
 	BMP output;
 	VoxelBuffer* vb;

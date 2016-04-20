@@ -109,78 +109,40 @@ void VolumetricRendering::Render(){
 	vec3 ray;
 	for(int i=0;i<cam->resX; i++){
 		for(int j=0;j<cam->resY; j++){
-			D = cam->M + (((2*i/(cam->resX-1)-1)*cam->H) + ((2*j/(cam->resY-1)-1)*cam->V));
+			D = cam->M + (((2 * i/(cam->resX-1)-1) * cam->H) + ((2*j/(cam->resY-1)-1) * cam->V));
 			ray = D - cam->eye;
 			normalize(ray);
-			vec3 color;
-			color.x=0;
-			color.y=0;
-			color.z=0;
-			float transmittance = 1.0f;
-			vec3  currentPos;
-			float deltT = 0.0f;
-			//float kappa = 0.6f;
+			vec3 pixelCol = cam->BRGB;
+			Raytrace(pixelCol,ray,0);
 
-			currentPos = cam->eye;
-			while( currentPos.z > 0.0f){ //
-				if (!vb->isIn(currentPos)){
 
-				}
-				else{//in a voxel
-					if(vb->lightRead(currentPos) == -1){//calc the light
-						vb->lightWrite(currentPos, getLight(currentPos));
-					}
-					deltT = exp((-kappa)*cam->step*vb->densityRead(currentPos));
-					transmittance *= deltT;
-					color.x += ((1.0f - deltT)/kappa) * (cam->MRGB.x * cam->LRGB.x * vb->lightRead(currentPos) * transmittance);
-					color.y += ((1.0f - deltT)/kappa) * (cam->MRGB.y * cam->LRGB.y * vb->lightRead(currentPos) * transmittance);
-					color.z += ((1.0f - deltT)/kappa) * (cam->MRGB.z * cam->LRGB.z * vb->lightRead(currentPos) * transmittance);
-				}
-				currentPos.x += ray.x * cam->step;
-				currentPos.y += ray.y * cam->step;
-				currentPos.z += ray.z * cam->step;
-			}
-			float red =   (cam->BRGB.x * transmittance + color.x) * 255;
-			float green = (cam->BRGB.y * transmittance + color.y) * 255;
-			float blue =  (cam->BRGB.z * transmittance + color.z) * 255;
-			if(red>255) red = 255;
-			if(green>255) green = 255;
-			if(blue>255) blue = 255;
 
-			output(i,cam->resY-j-1)->Red = red;
-			output(i,cam->resY-j-1)->Green = green;
-			output(i,cam->resY-j-1)->Blue = blue;
-			transmittance = 1.0f;
+			float red =   (pixelCol.x) * 255;
+		    float green = (pixelCol.y) * 255;
+		    float blue =  (pixelCol.z) * 255;
+		    if(red>255) red = 255;
+		    if(green>255) green = 255;
+		    if(blue>255) blue = 255;
 
+		     output(i,cam->resY-j-1)->Red = red;
+		     output(i,cam->resY-j-1)->Green = green;
+		     output(i,cam->resY-j-1)->Blue = blue;
+
+			 output.WriteToFile(cam->file.c_str());
+			//draw(pixelCol)
+			
 		}
 	}
 }
+void VolumetricRendering::Raytrace(vec3 pixelCol, vec3 ray, int depth){
+	
+
+}
+
 
 float VolumetricRendering::getLight(vec3 currentPos){
-	vec3 lightRay;
-	float delT = 0.0f;
-	lightRay.x = cam->LPOS.x - vb->getVoxelCenter(currentPos).x;
-	lightRay.y = cam->LPOS.y - vb->getVoxelCenter(currentPos).y;
-	lightRay.z = cam->LPOS.z - vb->getVoxelCenter(currentPos).z;
-	float length = magnitude(lightRay);
-	int numsteps = length/cam->step;
-	vec3 tempPos = currentPos;
-	float Transmittance = 1.0f;
-	normalize(lightRay);//treat this as a dir
-	for(int k=0 ;k<numsteps;k++){
-		if(!vb->isIn(tempPos)){
-			break;//once im out of the voxel quit
-		}
-		else{
-
-			delT = exp(-kappa * cam->step * vb->densityRead(tempPos));
-			Transmittance *= delT;
-		}
-		tempPos.x += lightRay.x*cam->step;
-		tempPos.y += lightRay.y*cam->step;
-		tempPos.z += lightRay.z*cam->step;
-	}
-	return Transmittance;
+	//blin phong goes here
+	return -1.0f;
 }
 
 void VolumetricRendering::draw(){

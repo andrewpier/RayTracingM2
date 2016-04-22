@@ -5,6 +5,7 @@ just give me an A Zared.
 
 #include "VolumetricRendering.h"
 #include "perlin.h"
+#include "stubs.h"
 using std::cout;
 using std::endl;
 //can change this to make it more or less dark
@@ -13,20 +14,20 @@ float opacity = 1.0f;
 
 
 void VolumetricRendering::Generate(){
-	for(int i=0; i < vb->num; i++){
+	/*for(int i=0; i < vb->num; i++){
 		if(vb->buff.type[i] == "sphere"){
-			Sphere(vb->buff.radius[i], vb->buff.loc[i]);
+			//here(vb->buff.radius[i], vb->buff.loc[i]);
 		}else if(vb->buff.type[i] == "cloud"){
 			Cloud(vb->buff.radius[i], vb->buff.loc[i]);
 		}else if(vb->buff.type[i] == "pyroclastic"){
 			Pyro(vb->buff.radius[i], vb->buff.loc[i]);
 		}
-	}
+	}*/
+
+
 }
 
-void VolumetricRendering::Sphere(float radius, vec3 loc){
-	
-}
+
 
 void VolumetricRendering::Cloud(float radius, vec3 loc){
 	
@@ -49,6 +50,7 @@ void VolumetricRendering::Render(){
 
 
 
+
 			float red =   (pixelCol.x) * 255;
 		    float green = (pixelCol.y) * 255;
 		    float blue =  (pixelCol.z) * 255;
@@ -61,13 +63,31 @@ void VolumetricRendering::Render(){
 		     output(i,cam->resY-j-1)->Blue = blue;
 
 			 output.WriteToFile(cam->file.c_str());
-			//draw(pixelCol)
 			
 		}
 	}
 }
 void VolumetricRendering::Raytrace(vec3& pixelCol, vec3 ray, int depth){
-	float t = -1;
+	float t = 255485245454; //infinity 
+	int maxDepth = 5;
+	float t1 = Test_RayCubeIntersect(vec4(ray,1),normalize(vec4(ray,1)),cube.mat);
+	if(t1 != -1 && t1 < t){
+		t = t1;
+		//set nearest geo
+
+	}
+	if (t != 255485245454){
+		//check shadow feelers
+		//calc lighting
+		//update pixel color
+		if (cube.reflective > 0){
+			if( depth < maxDepth){
+				//Raytrace(pixelCol,glm::reflect(vec4(ray,1)),depth +1);
+			}
+		}
+
+	}
+	
 
 
 }

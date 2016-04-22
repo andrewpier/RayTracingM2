@@ -68,7 +68,7 @@ void VolumetricRendering::Render(){
 void VolumetricRendering::Raytrace(vec3& pixelCol, vec3 ray, int depth){
 	float t = -1;
 	
-	Test_RayCubeIntersect(vec4(ray,1),normalize(vec4(ray,1)),cube.mat);
+		Test_RayCubeIntersect(vec4(ray,1),normalize(vec4(ray,1)),cube.mat);
 	
 
 

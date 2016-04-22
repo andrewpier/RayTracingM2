@@ -150,7 +150,6 @@
     <ClInclude Include="EasyBMP_DataStructures.h" />
     <ClInclude Include="EasyBMP_VariousBMPutilities.h" />
     <ClInclude Include="perlin.h" />
-    <ClInclude Include="Shapes.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="stubs.h" />
     <ClInclude Include="Triangle.h" />

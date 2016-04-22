@@ -45,6 +45,7 @@ public:
 
 	float VolumetricRendering::getLight(vec3 pos);
 	void Raytrace(vec3& pixelCol, vec3 ray, int depth);
+
 	Sphere sphere;
 	Cube cube;
 	Triangle tri;

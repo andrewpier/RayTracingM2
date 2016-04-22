@@ -83,7 +83,7 @@ public:
 		colors[23] = vec3(0.5f, 0.0f, 0.5f);
 
 	}
-	 void transform(mat4x4 m) {
+	 void transform(mat4 m) {
 		for (int i = 0; i < 24; i++)
 			points[i] = m * points[i];
 	}

@@ -9,7 +9,7 @@ using glm::mat4;
 using std::string;
 using std::ofstream;
 class Sphere {
-
+public:
 	float radius;
 	mat4 mat; 
 	vec4 points[24];
@@ -20,7 +20,7 @@ class Sphere {
 
 
 	}
-	 void transform(mat4x4 m) {
+	 void transform(mat4 m) {
 		for (int i = 0; i < 24; i++)
 			points[i] = m * points[i];
 	}

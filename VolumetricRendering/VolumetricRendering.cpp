@@ -10,6 +10,8 @@ using std::endl;
 //can change this to make it more or less dark
 float opacity = 1.0f;
 
+
+
 void VolumetricRendering::Generate(){
 	for(int i=0; i < vb->num; i++){
 		if(vb->buff.type[i] == "sphere"){
@@ -23,85 +25,15 @@ void VolumetricRendering::Generate(){
 }
 
 void VolumetricRendering::Sphere(float radius, vec3 loc){
-	for(int i=0;i<vb->dimensions.x; i++){
-		for(int j=0;j<vb->dimensions.y; j++){
-			for(int k=0;k<vb->dimensions.z; k++){
-				vec3 ray;
-				ray.x = i;
-				ray.y = j;
-				ray.z = k;
-				vec3 diff;
-				diff.x = ray.x - loc.x; 
-				diff.y = ray.y - loc.y; 
-				diff.z = ray.z - loc.z;
-				float mag = magnitude(diff);
-				if( mag < radius){
-					vb->densityWrite(vb->getVoxelCenter(ray), 0.5f);
-				}
-			}
-		}
-	}
+	
 }
 
 void VolumetricRendering::Cloud(float radius, vec3 loc){
-	for(int i=0;i<vb->dimensions.x; i++){
-		for(int j=0;j<vb->dimensions.y; j++){
-			for(int k=0;k<vb->dimensions.z; k++){
-				vec3 ray;
-				ray.x = i;
-				ray.y = j;
-				ray.z = k;
-				vec3 currentPos = vb->getVoxelCenter(ray);
-
-				vec3 diff;
-				diff.x = currentPos.x - loc.x; 
-				diff.y = currentPos.y - loc.y; 
-				diff.z = currentPos.z - loc.z;
-
-				float mag = magnitude(diff);
-				
-				
-				float den = vb->per->Get(currentPos.x,currentPos.y,currentPos.z) + (1-(mag/radius));
-				
-				if( den > 0.0f){
-
-					float tempDen = vb->densityRead(currentPos);
-					den += tempDen;
-					den *= opacity;
-					vb->densityWrite(currentPos, den);
-				}
-			}
-		}
-	}
+	
 }
 
 void VolumetricRendering::Pyro(float radius, vec3 loc){//loc is the center
-	for(int i=0;i<vb->dimensions.x; i++){
-		for(int j=0;j<vb->dimensions.y; j++){
-			for(int k=0;k<vb->dimensions.z; k++){
-				vec3 ray;
-				ray.x = i;
-				ray.y = j;
-				ray.z = k;
-				vec3 diff;
-				vec3 currentPos = vb->getVoxelCenter(ray);
-
-				diff.x = currentPos.x - loc.x; 
-				diff.y = currentPos.y - loc.y; 
-				diff.z = currentPos.z - loc.z;
-
-				float mag = magnitude(diff);
-
-				float den = radius - mag/radius + abs(vb->per->Get(currentPos.x,currentPos.y,currentPos.z));
-				if( den > 0.0f){
-					float tempDen = vb->densityRead(currentPos);
-					den += tempDen;
-					den *= opacity;
-					vb->densityWrite(currentPos, den);
-				}
-			}
-		}
-	}
+	
 }
 
 void VolumetricRendering::Render(){
@@ -134,8 +66,9 @@ void VolumetricRendering::Render(){
 		}
 	}
 }
-void VolumetricRendering::Raytrace(vec3 pixelCol, vec3 ray, int depth){
-	
+void VolumetricRendering::Raytrace(vec3& pixelCol, vec3 ray, int depth){
+	float t = -1;
+
 
 }
 

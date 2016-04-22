@@ -16,8 +16,12 @@ then can use the reay generation code to and  camera to produce the image
 using std::string;
 using std::ifstream;
 
-const float pi = 3.14159265359;
 
+const float pi = 3.14159265359;
+using glm::ivec3;
+using glm::vec3;
+using glm::cross;
+using glm::normalize;
 
 class Camera{
 public:

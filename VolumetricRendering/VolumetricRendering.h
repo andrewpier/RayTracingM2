@@ -14,7 +14,7 @@ This is the Volumetric Rendering header
 #include "VoxelBuffer.h"
 #include "Camera.h"
 #include <math.h>
-#include "vec.h"
+#include "glm\glm.hpp"
 #include "EasyBMP.h"
 using std::string;
 using std::ifstream;
@@ -39,7 +39,7 @@ public:
 	void Cloud(float,vec3);
 
 	float VolumetricRendering::getLight(vec3 pos);
-	void Raytrace(vec3 pixelCol, vec3 ray, int depth);
+	void Raytrace(vec3& pixelCol, vec3 ray, int depth);
 
 
 	void draw();

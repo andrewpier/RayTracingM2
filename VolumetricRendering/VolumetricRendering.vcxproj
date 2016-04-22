@@ -150,7 +150,6 @@
     <ClInclude Include="EasyBMP_VariousBMPutilities.h" />
     <ClInclude Include="perlin.h" />
     <ClInclude Include="stubs.h" />
-    <ClInclude Include="vec.h" />
     <ClInclude Include="VolumetricRendering.h" />
     <ClInclude Include="VoxelBuffer.h" />
   </ItemGroup>
@@ -159,7 +158,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="perlin.cpp" />
     <ClCompile Include="stubs.cpp" />
-    <ClCompile Include="vec3.cpp" />
     <ClCompile Include="VolumetricRendering.cpp" />
     <ClCompile Include="VoxelBuffer.cpp" />
   </ItemGroup>

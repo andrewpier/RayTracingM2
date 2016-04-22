@@ -10,15 +10,17 @@
  * Jan. 22, 2015
  * COMP 361
  */
-
+#include "glm\glm.hpp"
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <math.h>
-#include "vec.h"
 #include "perlin.h"
 using std::ifstream;
 using std::string;
+using glm::vec3;
+using glm::ivec3;
+
 typedef struct buffer{
 		float  *light;
 		float  *density;

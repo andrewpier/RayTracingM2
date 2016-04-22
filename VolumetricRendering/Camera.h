@@ -29,35 +29,38 @@ public:
 	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB, vec3 _MRGB,vec3 _LPOS, vec3 _LRGB){
 		eye = _Eye;
 		up = _Up; 
-		eye = _Eye;
 		n = _view;
 		fov = _fov;
 		resX = _resX;
 		resY = _resY;
 		file=_file;
 		delt = _delt;
-
 		step= _step;
 
 		BRGB = _BRGB;
 		MRGB = _MRGB;
 		LPOS = _LPOS;
 		LRGB = _LRGB;
+		
+		n = normalize(vec3(0,0,0) - eye);
 
-		u = cross(n,up);
+		// up is there
+		up = vec3(-n.y, n.x, n.z);
+		
+		u = cross(up,n);
+		
 		normalize(u);
 		M = eye + n;
 		float rad = (fov*pi)/180.0f; 
 		float aspectRatio = resX/resY;
 		V = up*tan(rad);
-		
+
 		H.x = V.y * aspectRatio;
 		H.y = V.x * aspectRatio; 
 		H.z = V.z * aspectRatio; 
 		//H = tan(rad) * u * aspectRatio;
-		
 	}
-
+	
 	static Camera* factory(const std::string& filename){
 		ifstream read;
 		read.open(filename);
@@ -85,7 +88,7 @@ public:
 	}
 	string file;
 	float resX, resY, fov, delt,step;
-	vec3 lookAt, up, u, n, M, V, H, view, eye, BRGB,MRGB, LPOS, LRGB;
+	vec3 up, u, n, M, V, H, view, eye, BRGB,MRGB, LPOS, LRGB;
 
 };
 

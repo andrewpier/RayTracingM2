@@ -13,7 +13,9 @@ public:
 	vec4 points[24];
 	vec3 colors[24];
 	mat4 mat;
+	float reflective;
 	Cube() {
+		reflective = 0;
 		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1));
 
 		//front face

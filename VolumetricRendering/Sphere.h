@@ -13,7 +13,10 @@ public:
 	float radius;
 	mat4 mat; 
 	vec4 points[24];
+	float reflective;
+
 	Sphere() {
+		reflective =0;
 		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1));
 		radius = 1;
 		// (x - x_0 )^2 + (y - y_0 )^2 + ( z - z_0 )^2 = r^2.

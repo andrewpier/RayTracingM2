@@ -14,7 +14,7 @@ float opacity = 1.0f;
 
 
 void VolumetricRendering::Generate(){
-	for(int i=0; i < vb->num; i++){
+	/*for(int i=0; i < vb->num; i++){
 		if(vb->buff.type[i] == "sphere"){
 			//here(vb->buff.radius[i], vb->buff.loc[i]);
 		}else if(vb->buff.type[i] == "cloud"){
@@ -22,7 +22,9 @@ void VolumetricRendering::Generate(){
 		}else if(vb->buff.type[i] == "pyroclastic"){
 			Pyro(vb->buff.radius[i], vb->buff.loc[i]);
 		}
-	}
+	}*/
+
+
 }
 
 
@@ -66,9 +68,25 @@ void VolumetricRendering::Render(){
 	}
 }
 void VolumetricRendering::Raytrace(vec3& pixelCol, vec3 ray, int depth){
-	float t = -1;
-	
-		Test_RayCubeIntersect(vec4(ray,1),normalize(vec4(ray,1)),cube.mat);
+	float t = 255485245454; //infinity 
+	int maxDepth = 5;
+	float t1 = Test_RayCubeIntersect(vec4(ray,1),normalize(vec4(ray,1)),cube.mat);
+	if(t1 != -1 && t1 < t){
+		t = t1;
+		//set nearest geo
+
+	}
+	if (t != 255485245454){
+		//check shadow feelers
+		//calc lighting
+		//update pixel color
+		if (cube.reflective > 0){
+			if( depth < maxDepth){
+				//Raytrace(pixelCol,glm::reflect(vec4(ray,1)),depth +1);
+			}
+		}
+
+	}
 	
 
 

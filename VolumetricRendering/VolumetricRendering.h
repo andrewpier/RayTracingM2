@@ -16,6 +16,9 @@ This is the Volumetric Rendering header
 #include <math.h>
 #include "glm\glm.hpp"
 #include "EasyBMP.h"
+#include "Triangle.h"
+#include "Sphere.h"
+#include "Cube.h"
 using std::string;
 using std::ifstream;
 using namespace glm;
@@ -34,13 +37,17 @@ public:
 	void Render();
 	void Generate();
 
-	void Sphere(float,vec3);
+	//void Sphere(float,vec3);
 	void Pyro(float,vec3);
 	void Cloud(float,vec3);
 
+
+
 	float VolumetricRendering::getLight(vec3 pos);
 	void Raytrace(vec3& pixelCol, vec3 ray, int depth);
-
+	Sphere sphere;
+	Cube cube;
+	Triangle tri;
 
 	void draw();
 	BMP output;

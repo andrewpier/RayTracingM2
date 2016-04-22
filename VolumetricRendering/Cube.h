@@ -5,22 +5,16 @@
 
 using glm::vec4;
 using glm::vec3;
-using glm::mat4x4;
+using glm::mat4;
 using std::string;
 using std::ofstream;
-
-class Shape {
+class Cube {
 public:
-	virtual void init() = 0;
-	virtual void transform(mat4x4 ) = 0;
-	virtual void print(string filename) = 0;
-};
-
-class Cube: public Shape {
-
 	vec4 points[24];
 	vec3 colors[24];
-	virtual void init() {
+	mat4 mat;
+	Cube() {
+		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1));
 
 		//front face
 		points[0] = vec4(+0.5f, +1.0f, 0.5f, 1.0f);
@@ -89,11 +83,11 @@ class Cube: public Shape {
 		colors[23] = vec3(0.5f, 0.0f, 0.5f);
 
 	}
-	virtual void transform(mat4x4 m) {
+	 void transform(mat4x4 m) {
 		for (int i = 0; i < 24; i++)
 			points[i] = m * points[i];
 	}
-	virtual void print(string filename) {
+	 void print(string filename) {
 		ofstream fout;
 		fout.open(filename, std::ios::app);
 		fout << "Cube\n";

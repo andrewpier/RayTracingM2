@@ -144,12 +144,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cube.h" />
     <ClInclude Include="EasyBMP.h" />
     <ClInclude Include="EasyBMP_BMP.h" />
     <ClInclude Include="EasyBMP_DataStructures.h" />
     <ClInclude Include="EasyBMP_VariousBMPutilities.h" />
     <ClInclude Include="perlin.h" />
+    <ClInclude Include="Shapes.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="stubs.h" />
+    <ClInclude Include="Triangle.h" />
     <ClInclude Include="VolumetricRendering.h" />
     <ClInclude Include="VoxelBuffer.h" />
   </ItemGroup>

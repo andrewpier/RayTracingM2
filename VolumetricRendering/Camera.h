@@ -56,22 +56,21 @@ public:
 		90 degrees CCW about z-axis: (x, y, z) -> (-y, x, z)
 		*/
 
-
-		up = vec3(n.x, -n.z, n.y);
-		//up = vec3(n.x, -n.z, n.y);
-
-		u = cross(up,n);
-
+		u = cross(n,(vec3(0,1,0)));
+		up = cross(u,n);
 		normalize(u);
+
 		M = eye + n;
 		float rad = (fov*pi)/180.0f; 
 		float aspectRatio = resX/resY;
 		V = up*tan(rad);
 
-		H.x = V.y * aspectRatio;
+
+
+		/*H.x = V.y * aspectRatio;
 		H.y = V.x * aspectRatio; 
-		H.z = V.z * aspectRatio; 
-		//H = tan(rad) * u * aspectRatio;
+		H.z = V.z * aspectRatio;*/ 
+		H = tan(rad) * u * aspectRatio;
 	}
 
 	static Camera* factory(const std::string& filename){

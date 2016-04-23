@@ -17,6 +17,7 @@ This is the Volumetric Rendering header
 #include "EasyBMP.h"
 #include "Cube.h"
 #include "Sphere.h"
+#include "Triangle.h"
 
 using std::string;
 using std::ifstream;
@@ -43,6 +44,7 @@ public:
 	void Raytrace(vec3& pixelCol, Ray ray, int depth);
 	Sphere sphere;
 	Cube cube;
+	Triangle triangle;
 	void draw();
 	BMP output;
 	VoxelBuffer* vb;

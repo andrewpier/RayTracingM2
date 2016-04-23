@@ -45,6 +45,6 @@ double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, con
 
 // This is just like Test_RaySphereIntersect, but with a unit cube instead of a
 // sphere. A unit cube extends from -0.5 to 0.5 in all axes.
-double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T);
+double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4& normal);
 
 #endif

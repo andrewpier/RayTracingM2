@@ -41,14 +41,27 @@ public:
 		MRGB = _MRGB;
 		LPOS = _LPOS;
 		LRGB = _LRGB;
-		
+
 		n = normalize(vec3(0,0,0) - eye);
 
 		// up is there
-		up = vec3(-n.y, n.x, n.z);
-		
+		/*
+		90 degrees CW about x-axis: (x, y, z) -> (x, -z, y)
+		90 degrees CCW about x-axis: (x, y, z) -> (x, z, -y)
+
+		90 degrees CW about y-axis: (x, y, z) -> (-z, y, x)
+		90 degrees CCW about y-axis: (x, y, z) -> (z, y, -x)
+
+		90 degrees CW about z-axis: (x, y, z) -> (y, -x, z)
+		90 degrees CCW about z-axis: (x, y, z) -> (-y, x, z)
+		*/
+
+
+		up = vec3(n.x, -n.z, n.y);
+		//up = vec3(n.x, -n.z, n.y);
+
 		u = cross(up,n);
-		
+
 		normalize(u);
 		M = eye + n;
 		float rad = (fov*pi)/180.0f; 
@@ -60,7 +73,7 @@ public:
 		H.z = V.z * aspectRatio; 
 		//H = tan(rad) * u * aspectRatio;
 	}
-	
+
 	static Camera* factory(const std::string& filename){
 		ifstream read;
 		read.open(filename);

@@ -67,11 +67,6 @@ int main(int argc, char** argv) {
 	/*vr2= new VolumetricRendering(vb2,cam2);
 	vr3= new VolumetricRendering(vb3,cam3);*/
 
-
-	vr1->Generate();
-	/*vr2->Generate();
-	vr3->Generate();*/
-
 	vr1->Render();
 	vr1->draw();
 	/*vr2->Render();

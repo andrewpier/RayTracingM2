@@ -11,17 +11,6 @@ using std::endl;
 //can change this to make it more or less dark
 float opacity = 1.0f;
 
-void VolumetricRendering::Generate(){
-	//for(int i=0; i < vb->num; i++){
-	//	if(vb->buff.type[i] == "sphere"){
-	//		Sphere(vb->buff.radius[i], vb->buff.loc[i]);
-	//	}else if(vb->buff.type[i] == "cloud"){
-	//		Cloud(vb->buff.radius[i], vb->buff.loc[i]);
-	//	}else if(vb->buff.type[i] == "pyroclastic"){
-	//		Pyro(vb->buff.radius[i], vb->buff.loc[i]);
-	//	}
-	//}
-}
 
 void VolumetricRendering::Render(){
 	vec3 D;

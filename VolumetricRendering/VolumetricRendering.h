@@ -38,12 +38,7 @@ public:
 	}
 
 	void Render();
-	void Generate();
-
-	//void Sphere(float,vec3);
-	//void Pyro(float,vec3);
-	//void Cloud(float,vec3);
-
+	
 	vec3 VolumetricRendering::getLightColor(vec4 pos, vec4 n);
 	void Raytrace(vec3& pixelCol, Ray ray, int depth);
 	Sphere sphere;

@@ -175,6 +175,10 @@
     <Text Include="test3.txt" />
     <Text Include="test3_old.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="milestone4.frag" />
+    <None Include="milestone4.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

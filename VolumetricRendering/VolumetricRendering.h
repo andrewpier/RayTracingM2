@@ -5,7 +5,6 @@
 By: Andrew Pier
 Comp 361
 This is the Volumetric Rendering header 
-
 */
 
 #include <fstream>
@@ -16,13 +15,17 @@ This is the Volumetric Rendering header
 #include <math.h>
 #include "glm\glm.hpp"
 #include "EasyBMP.h"
-#include "Triangle.h"
-#include "Sphere.h"
 #include "Cube.h"
+#include "Sphere.h"
+
 using std::string;
 using std::ifstream;
 using namespace glm;
 
+struct Ray {
+	vec4 dir;
+	vec4 pos;
+};
 
 class VolumetricRendering{
 public:
@@ -38,24 +41,17 @@ public:
 	void Generate();
 
 	//void Sphere(float,vec3);
-	void Pyro(float,vec3);
-	void Cloud(float,vec3);
+	//void Pyro(float,vec3);
+	//void Cloud(float,vec3);
 
-
-
-	float VolumetricRendering::getLight(vec3 pos);
-	void Raytrace(vec3& pixelCol, vec3 ray, int depth);
-
+	vec3 VolumetricRendering::getLightColor(vec4 pos, vec4 n);
+	void Raytrace(vec3& pixelCol, Ray ray, int depth);
 	Sphere sphere;
 	Cube cube;
-	Triangle tri;
-
 	void draw();
 	BMP output;
 	VoxelBuffer* vb;
 	Camera* cam;
 	float kappa;
-
-	
 };
 #endif

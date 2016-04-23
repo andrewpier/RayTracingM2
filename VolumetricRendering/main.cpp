@@ -55,29 +55,29 @@ int main(int argc, char** argv) {
 
 	cout << "****** Constructing VoxelBuffers ******" << endl;
 	vb1 = VoxelBuffer::factory("mine1.txt");
-	cout << "*******  VoxelBuffer 1 Finished  *******" << endl;
+	/*cout << "*******  VoxelBuffer 1 Finished  *******" << endl;
 	vb2 = VoxelBuffer::factory("mine2.txt");
 	cout << "*******  VoxelBuffer 2 Finished  *******" << endl;
-	vb3 = VoxelBuffer::factory("mine3.txt");
+	vb3 = VoxelBuffer::factory("mine3.txt");*/
 
 	cout << "*******  VoxelBuffer 3 Finished  *******\n\n";
 	cout << "*******  Generating Images  *******\n";
 
 	vr1= new VolumetricRendering(vb1,cam1);
-	vr2= new VolumetricRendering(vb2,cam2);
-	vr3= new VolumetricRendering(vb3,cam3);
+	/*vr2= new VolumetricRendering(vb2,cam2);
+	vr3= new VolumetricRendering(vb3,cam3);*/
 
 
 	vr1->Generate();
-	vr2->Generate();
-	vr3->Generate();
+	/*vr2->Generate();
+	vr3->Generate();*/
 
 	vr1->Render();
 	vr1->draw();
-	vr2->Render();
+	/*vr2->Render();
 	vr2->draw();
 	vr3->Render();
-	vr3->draw();
+	vr3->draw();*/
 	
 	return 0;
 }

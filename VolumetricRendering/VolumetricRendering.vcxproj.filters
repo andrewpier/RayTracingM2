@@ -28,6 +28,9 @@
     <Filter Include="Resource Files\Mine">
       <UniqueIdentifier>{53eaf099-239c-4c18-adfb-6bc551107aa5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\oldShader">
+      <UniqueIdentifier>{b77267d7-a0c0-46e1-9380-912bea367e1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumetricRendering.h">
@@ -60,10 +63,10 @@
     <ClInclude Include="Cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
+    <ClInclude Include="Sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.h">
+    <ClInclude Include="Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -115,5 +118,13 @@
     <Text Include="mine3.txt">
       <Filter>Resource Files\Mine</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="milestone4.frag">
+      <Filter>Resource Files\oldShader</Filter>
+    </None>
+    <None Include="milestone4.vert">
+      <Filter>Resource Files\oldShader</Filter>
+    </None>
   </ItemGroup>
 </Project>

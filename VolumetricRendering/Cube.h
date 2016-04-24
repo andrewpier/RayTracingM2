@@ -17,9 +17,6 @@ public:
 	Cube() {
 		reflective = 0;
 		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1));
-
-	
-
 	}
 	 void transform(mat4 m) {
 		for (int i = 0; i < 24; i++)
@@ -41,7 +38,6 @@ public:
 		fout << "**********************\n";
 		fout.close();
 	}
-
 
 
 	 Cube(vec3 T, float R, vec3 S) {

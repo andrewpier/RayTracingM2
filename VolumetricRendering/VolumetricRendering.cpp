@@ -66,8 +66,6 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 		//calc lighting
 		vec4 normalOfSphere = normalize(intersectionPosition - sphere.center);
 
-		
-		//normal = cube.mat * normal;
 		pixelCol = getLightColor(intersectionPosition, normal);
 		//update pixel color
 		if (cube.reflective > 0 && depth < maxDepth){

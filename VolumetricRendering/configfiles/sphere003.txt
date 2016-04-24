@@ -3,7 +3,7 @@ STEP 0.5
 XYZC 100 100 100
 BRGB 0 0 0
 MRGB 0.1 0.7 0.60
-FILE mine1_cube.bmp
+FILE sphere003.bmp
 RESO 640 480
 EYEP 0 0 3
 VDIR 0 0 0
@@ -14,7 +14,7 @@ LCOL 1 1 1
 
 1
 
-cube
+sphere
 1 1 1
 0 0 0
-90
+0

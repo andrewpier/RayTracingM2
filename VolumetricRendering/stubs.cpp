@@ -190,7 +190,6 @@ double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4
 	float farz  = (signOfz * +0.5 - rayOrigin.z )/(rayDirection.z);
 
 
-
 	if (rayDirection.x == 0 && abs(rayOrigin.x) <= 0.5) {
 		nearx = INT_MIN;
 		farx  = INT_MAX;
@@ -208,7 +207,6 @@ double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4
 
 	float near = maximum(nearx, neary, nearz);
 	float far  = minimum(farx , fary , farz );
-
 	
 	//Calculate normals
 	if(near <= far)

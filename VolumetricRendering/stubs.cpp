@@ -215,24 +215,6 @@ double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4
 	{
 		vec4 intersectionPoint = near * rayDirection + rayOrigin;
 
-
-
-
-		////Check if x is closest
-		//if(intersectionPoint.x == 0.5)
-		//	normal = vec4(1,0,0,0);
-		//else if (intersectionPoint.x == -0.5)
-		//	normal = vec4(-1,0,0,0);
-		//else if (intersectionPoint.y ==  0.5)
-		//	normal = vec4(0,1,0,0);
-		//else if (intersectionPoint.y == -0.5)
-		//	normal = vec4(0,-1,0,0);
-		//else if (intersectionPoint.z ==  0.5)
-		//	normal = vec4(0,0,1,0);
-		//else if (intersectionPoint.z == -0.5)
-		//	normal = vec4(0,0,-1,0);
-
-
 		float maxOffset = 0.001;
 		if(floatCompare(intersectionPoint.x, 0.5, maxOffset))
 			normal = vec4(1,0,0,0);
@@ -253,7 +235,6 @@ double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4
 			normal = T * normal;
 			normal = normalize(normal);
 		}
-
 
 		return near;
 	}

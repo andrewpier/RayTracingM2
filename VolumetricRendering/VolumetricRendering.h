@@ -42,7 +42,6 @@ public:
 		sphere = _cam->sphere;
 		cube = _cam->cube;
 		tri = _cam->tri;
-		
 	}
 
 	void Render();
@@ -53,8 +52,6 @@ public:
 	Cube cube;
 
 	Triangle tri;
-
-
 
 	void draw();
 	BMP output;

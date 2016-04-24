@@ -12,7 +12,7 @@ using std::endl;
 float opacity = 1.0f;
 
 
-void VolumetricRendering::Render(){
+void VolumetricRendering::Render() {
 	vec3 D;
 	for(int i=0;i<cam->resX; i++){
 		for(int j=0;j<cam->resY; j++){
@@ -23,10 +23,8 @@ void VolumetricRendering::Render(){
 			ray.pos = vec4(cam->eye, 1.0f);
 
 			vec3 pixelCol = cam->BRGB;
-
 			//raytrace
 			Raytrace(pixelCol,ray,0);
-
 
 			float red =   (pixelCol.x) * 255;
 			float green = (pixelCol.y) * 255;
@@ -48,7 +46,14 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 
 	//float t1 = Test_RaySphereIntersect(ray.pos, ray.dir, sphere.mat);
 
+
 	float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat);
+
+	//float t1 = Test_RayPolyIntersect(ray.pos, ray.dir, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),cube.mat);
+
+	vec4 normal = vec4(0,0,0,1);
+	float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat, normal);
+
 	if(t1 != -1 && t1 < t){
 		t = t1;
 		//set nearest geo
@@ -58,10 +63,9 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 		//calc lighting
 
 		vec4 intersectionPosition = t * ray.dir + ray.pos;
-
-		
-		vec4 normalOfSphere = normalize(intersectionPosition - sphere.center);
-		pixelCol = getLightColor(intersectionPosition, normalOfSphere);
+				
+		//vec4 normalOfSphere = normalize(intersectionPosition - sphere.center);
+		pixelCol = getLightColor(intersectionPosition, normal);
 		//update pixel color
 		if (cube.reflective > 0 && depth < maxDepth){
 			//if( depth < maxDepth){

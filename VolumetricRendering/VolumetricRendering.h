@@ -51,7 +51,11 @@ public:
 	void Raytrace(vec3& pixelCol, Ray ray, int depth);
 	Sphere sphere;
 	Cube cube;
+
 	Triangle tri;
+
+
+
 	void draw();
 	BMP output;
 	VoxelBuffer* vb;

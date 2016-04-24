@@ -18,71 +18,7 @@ public:
 		reflective = 0;
 		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1));
 
-		//front face
-		points[0] = vec4(+0.5f, +1.0f, 0.5f, 1.0f);
-		points[1] = vec4(-0.5f, +1.0f, 0.5f, 1.0f);
-		points[2] = vec4(-0.5f, -0.0f, 0.5f, 1.0f);
-		points[3] = vec4(+0.5f, -0.0f, 0.5f, 1.0f);
-
-		colors[0] = vec3(1.0f, 0.0f, 0.0f);
-		colors[1] = vec3(1.0f, 0.0f, 0.0f);
-		colors[2] = vec3(1.0f, 0.0f, 0.0f);
-		colors[3] = vec3(1.0f, 0.0f, 0.0f);
-
-		//back face
-		points[4] = vec4(+0.5f, +1.0f, -0.5f, 1.0f);
-		points[5] = vec4(+0.5f, -0.0f, -0.5f, 1.0f);
-		points[6] = vec4(-0.5f, -0.0f, -0.5f, 1.0f);
-		points[7] = vec4(-0.5f, +1.0f, -0.5f, 1.0f);
-
-		colors[4] = vec3(0.0f, 1.0f, 0.0f);
-		colors[5] = vec3(0.0f, 1.0f, 0.0f);
-		colors[6] = vec3(0.0f, 1.0f, 0.0f);
-		colors[7] = vec3(0.0f, 1.0f, 0.0f);
-
-		//right face
-		points[8]  = vec4(0.5f, +1.0f, -0.5f, 1.0f);
-		points[9]  = vec4(0.5f, +1.0f, +0.5f, 1.0f);
-		points[10] = vec4(0.5f, -0.0f, +0.5f, 1.0f);
-		points[11] = vec4(0.5f, -0.0f, -0.5f, 1.0f);
-
-		colors[8 ] = vec3(0.2f, 0.8f, 0.0f);
-		colors[9 ] = vec3(0.2f, 0.8f, 0.0f);
-		colors[10] = vec3(0.2f, 0.8f, 0.0f);
-		colors[11] = vec3(0.2f, 0.8f, 0.0f);
-
-		//left face
-		points[12] = vec4(-0.5f, +1.0f, 0.5f, 0.5f);
-		points[13] = vec4(-0.5f, +1.0f, -0.5f, 0.5f);
-		points[14] = vec4(-0.5f, -0.0f, -0.5f, 0.5f);
-		points[15] = vec4(-0.5f, -0.0f, 0.5f, 0.5f);
-
-		colors[12] = vec3(0.8f, 0.2f, 0.0f);
-		colors[13] = vec3(0.8f, 0.2f, 0.0f);
-		colors[14] = vec3(0.8f, 0.2f, 0.0f);
-		colors[15] = vec3(0.8f, 0.2f, 0.0f);
-
-		//top face
-		points[16] = vec4(+0.5f, 1.0f, -0.5f, 1.0f);
-		points[17] = vec4(-0.5f, 1.0f, -0.5f, 1.0f);
-		points[18] = vec4(-0.5f, 1.0f, 0.5f,  1.0f);
-		points[19] = vec4(+0.5f, 1.0f, 0.5f,  1.0f);
-
-		colors[16] = vec3(0.0f, 0.0f, 1.0f);
-		colors[17] = vec3(0.0f, 0.0f, 1.0f);
-		colors[18] = vec3(0.0f, 0.0f, 1.0f);
-		colors[19] = vec3(0.0f, 0.0f, 1.0f);
-
-		//bottom face
-		points[20] = vec4(+0.5f, -0.0f, +0.5f, 1.0f);
-		points[21] = vec4(-0.5f, -0.0f, +0.5f, 1.0f);
-		points[22] = vec4(-0.5f, -0.0f, -0.5f, 1.0f);
-		points[23] = vec4(+0.5f, -0.0f, -0.5f, 1.0f);
-
-		colors[20] = vec3(0.5f, 0.0f, 0.5f);
-		colors[21] = vec3(0.5f, 0.0f, 0.5f);
-		colors[22] = vec3(0.5f, 0.0f, 0.5f);
-		colors[23] = vec3(0.5f, 0.0f, 0.5f);
+	
 
 	}
 	 void transform(mat4 m) {
@@ -104,5 +40,26 @@ public:
 		fout << "Point" << 7 << " (" << points[5].x << ", " << points[5].y << ", " << points[5].z << ")\n";
 		fout << "**********************\n";
 		fout.close();
+	}
+
+
+
+	 Cube(vec3 T, float R, vec3 S) {
+		reflective =0;
+		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1)) * translate(vec4(T,0)) * rotate(R) * scale(S);
+
+	}
+
+	mat4 translate(vec4 v){
+		mat4 translate = mat4( vec4(1,0,0,0 ), vec4(0,1,0,0), vec4(0,0,1,0), vec4(v.x , v.y, v.z ,1) );
+		return translate;
+	}
+	mat4 scale(vec3 v){
+		mat4 scalar = mat4( vec4(v.x,0,0,0), vec4(0,v.y,0,0), vec4(0,0,v.z,0), vec4(0,0,0,1) );
+		return scalar;
+	}
+	mat4 rotate(float v){
+		mat4 rotateY = mat4( vec4(cos(v),0,-sin(v),0), vec4(0,1,0,0), vec4(sin(v),0,cos(v),0), vec4(0,0,0,1) );
+		return rotateY;
 	}
 };

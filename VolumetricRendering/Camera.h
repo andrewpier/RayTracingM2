@@ -13,6 +13,9 @@ then can use the reay generation code to and  camera to produce the image
 #include <string>
 #include <math.h>
 #include "glm\glm.hpp"
+#include "Cube.h"
+#include "Triangle.h"
+#include "Sphere.h"
 using std::string;
 using std::ifstream;
 
@@ -26,7 +29,7 @@ using glm::normalize;
 class Camera{
 public:
 	Camera();
-	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB, vec3 _MRGB,vec3 _LPOS, vec3 _LRGB){
+	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB, vec3 _MRGB,vec3 _LPOS, vec3 _LRGB, Sphere s, Cube c, Triangle t){
 		eye = _Eye;
 		up = _Up; 
 		n = _view;
@@ -72,6 +75,9 @@ public:
 		H.y = V.x * aspectRatio; 
 		H.z = V.z * aspectRatio; 
 		//H = tan(rad) * u * aspectRatio;
+		sphere = s;
+		cube = c;
+		tri = t;
 	}
 
 	static Camera* factory(const std::string& filename){
@@ -79,6 +85,8 @@ public:
 		read.open(filename);
 		string garbage, file;
 		float delt;
+		int num;
+
 		vec3 up, view, eye, BRGB,MRGB, LPOS, LRGB;
 		float resX, resY, fov,step;
 		read>>garbage>>delt;
@@ -94,11 +102,42 @@ public:
 		read>>garbage>>fov;
 		read>>garbage>>LPOS.x>>LPOS.y>>LPOS.z;
 		read>>garbage>>LRGB.x>>LRGB.y>>LRGB.z;
+		read >> num;
+		string type;
+		vec3 translate, scale;
+		float rotate;
 
-		Camera *vb = new Camera(eye,up,view, fov, resX, resY, file,delt,step, BRGB,MRGB,LPOS,LRGB );
+		read>>type;
+		read>>scale.x>>scale.y>>scale.z;
+		read>>translate.x>>translate.y>>translate.z;
+		read>> rotate;
+		Sphere s;
+		Cube c;
+		Triangle t;
+		if(type == "sphere"){
+			 s = Sphere(translate,rotate,scale);
+			 c = Cube(vec3(0,0,0),0,vec3(0,0,0));
+			 t = Triangle(vec3(0,0,0),0,vec3(0,0,0));
+		}
+		else if(type == "cube"){
+			 c = Cube(translate,rotate,scale);
+			 s = Sphere(vec3(0,0,0),0.0f,vec3(0,0,0));
+			 t = Triangle(vec3(0,0,0),0.0f,vec3(0,0,0));
+		}
+		else if(type == "tri"){
+			 t = Triangle(translate,rotate,scale);
+			 c = Cube(vec3(0,0,0),0,vec3(0,0,0));
+			 s = Sphere(vec3(0,0,0),0.0f,vec3(0,0,0));
+		}
+
+		
+		Camera *vb = new Camera(eye,up,view, fov, resX, resY, file,delt,step, BRGB,MRGB,LPOS,LRGB,s,c,t );
 		read.close();
 		return vb;
 	}
+	Sphere sphere;
+	Triangle tri;
+	Cube cube;
 	string file;
 	float resX, resY, fov, delt,step;
 	vec3 up, u, n, M, V, H, view, eye, BRGB,MRGB, LPOS, LRGB;

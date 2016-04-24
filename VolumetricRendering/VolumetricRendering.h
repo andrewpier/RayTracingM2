@@ -17,6 +17,7 @@ This is the Volumetric Rendering header
 #include "EasyBMP.h"
 #include "Cube.h"
 #include "Sphere.h"
+#include "Triangle.h"
 
 using std::string;
 using std::ifstream;
@@ -29,12 +30,19 @@ struct Ray {
 
 class VolumetricRendering{
 public:
+	VolumetricRendering(){
+		sphere = Sphere(vec3(0,0,0),0.0f,vec3(0,0,0));
+	}
 	VolumetricRendering(VoxelBuffer* _vb, Camera* _cam){
 		output.SetSize(_cam->resX, _cam->resY);
 		output.SetBitDepth(24);
 		cam = _cam;
 		vb = _vb;
 		kappa = 1.0f;
+		sphere = _cam->sphere;
+		cube = _cam->cube;
+		tri = _cam->tri;
+		
 	}
 
 	void Render();
@@ -43,6 +51,7 @@ public:
 	void Raytrace(vec3& pixelCol, Ray ray, int depth);
 	Sphere sphere;
 	Cube cube;
+	Triangle tri;
 	void draw();
 	BMP output;
 	VoxelBuffer* vb;

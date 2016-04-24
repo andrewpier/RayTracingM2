@@ -46,9 +46,9 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 	float t = 255485245454; //infinity 
 	int maxDepth = 5;
 
-	float t1 = Test_RaySphereIntersect(ray.pos, ray.dir, sphere.mat);
+	//float t1 = Test_RaySphereIntersect(ray.pos, ray.dir, sphere.mat);
 
-	//float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat);
+	float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat);
 	if(t1 != -1 && t1 < t){
 		t = t1;
 		//set nearest geo

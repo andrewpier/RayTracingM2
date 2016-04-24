@@ -41,7 +41,7 @@ double Test_RaySphereIntersect(const vec4& P0, const vec4& V0, const mat4& T);
 // This is just like the above function, but it intersects the ray with a
 // triangle instead. The parameters p1, p2, and p3 specify the three
 // points of the triangle, in object space.
-double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, const vec4& p2, const vec4& p3, const mat4& T);
+double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, const vec4& p2, const vec4& p3, const mat4& T,vec4&);
 
 // This is just like Test_RaySphereIntersect, but with a unit cube instead of a
 // sphere. A unit cube extends from -0.5 to 0.5 in all axes.

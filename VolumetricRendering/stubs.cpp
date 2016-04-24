@@ -73,8 +73,10 @@ double Test_RaySphereIntersect(const vec4& P0, const vec4& V0, const mat4& T) {
 	//Otherwise, there was no intersection
 	return -1;
 }
-
-double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, const vec4& p2, const vec4& p3, const mat4& T) {
+bool floatCompare(float f1, float f2, float maxdiff) {
+  return abs(f1 - f2) < maxdiff;
+}
+double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, const vec4& p2, const vec4& p3, const mat4& T,vec4& normalNew) {
 	// TODO fill this in.
 	// See the documentation of this function in stubs.h.
 
@@ -89,6 +91,7 @@ double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, con
 	vec4 rayOrigin    = inverseT * P0;    //Replaces P0
 	vec4 rayDirection = inverseT * V0; //Replaces V0
 
+
 	vec3 normal1 = vec3(p3.x - p1.x, p3.y - p1.y, p3.z - p1.z); 
 	vec3 normal2 = vec3(p3.x - p2.x, p3.y - p2.y, p3.z - p2.z);
 
@@ -100,10 +103,17 @@ double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, con
 
 	vec3 vec = vec3(p1.x - rayOrigin.x, p1.y - rayOrigin.y, p1.z - rayOrigin.z);// dot product vector
 	float t = dot(normal, vec)/dot(normal, vec3(pt) - vec3(rayOrigin)); //Find the value for t
-	if (t  < 0.0f) // not gonna hit
+	float ep = .001;
+	if (t  < 0.0f + ep) // not gonna hit
 		return -1.0f;
 	vec4 R = rayOrigin + t*(pt - rayOrigin);
-
+	if(rayOrigin.z <= 0.0f){
+		normalNew = vec4(0,0,-1,0);
+		normalNew = T * normalNew;
+	}else{
+		normalNew = vec4(0,0,1,0);
+		normalNew = T * normalNew;
+	}
 
 #pragma region Triangles!!!!
 	mat3 R01 = mat3(p1.y, p1.z, 1.0f, p2.y, p2.z, 1.0f, p3.y, p3.z, 1.0f);
@@ -136,7 +146,7 @@ double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, con
 	float res = area1 + area2 + area3;
 
 	//check to see if its in bounds
-	if (res <= 1.0f && res >= 1.0f){
+	if (res <= 1.0f+ep && res >= 1.0f - ep){
 		return t;
 	}
 	return -1.0f;

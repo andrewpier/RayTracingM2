@@ -1,16 +1,16 @@
 /**
-  This testing framework has been developed/overhauled over time, primarily by:
-  Chris Czyzewicz
-  Ben Sunshine-Hill
-  Cory Boatright 
-  
-  While the three were PhD students at UPenn (through 2013).  This particular version has some
-  modifications by Cory since joining the faculty of Grove City College.
-  
-  Last revised 4/15/2015
+This testing framework has been developed/overhauled over time, primarily by:
+Chris Czyzewicz
+Ben Sunshine-Hill
+Cory Boatright 
+
+While the three were PhD students at UPenn (through 2013).  This particular version has some
+modifications by Cory since joining the faculty of Grove City College.
+
+Last revised 4/15/2015
 
 
-  Code added by: Andrew Pier, Sam Gill, Garth Brooks
+Code added by: Andrew Pier, Sam Gill, Garth Brooks
 */
 
 #include "stubs.h"
@@ -19,7 +19,7 @@
 using namespace glm;
 
 double Test_RaySphereIntersect(const vec4& P0, const vec4& V0, const mat4& T) {
-	
+
 	//NOTE: Assuming that we are using a unit sphere.
 
 	//Invert T matrix;
@@ -69,7 +69,7 @@ double Test_RaySphereIntersect(const vec4& P0, const vec4& V0, const mat4& T) {
 		return plus;
 	else if(minus > 0.0f && plus < 0.0f)
 		return minus;
-	
+
 	//Otherwise, there was no intersection
 	return -1;
 }
@@ -82,9 +82,9 @@ double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, con
 	// This is just like the above function, but it intersects the ray with a
 	// triangle instead. The parameters p1, p2, and p3 specify the three
 	// points of the triangle, in object space.
-		//Invert T matrix;
+	//Invert T matrix;
 	mat4 inverseT = inverse(T);
-	
+
 	//Transform ray with inverse matrix
 	vec4 rayOrigin    = inverseT * P0;    //Replaces P0
 	vec4 rayDirection = inverseT * V0; //Replaces V0
@@ -109,15 +109,15 @@ double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, con
 	mat3 R01 = mat3(p1.y, p1.z, 1.0f, p2.y, p2.z, 1.0f, p3.y, p3.z, 1.0f);
 	mat3 R02 = mat3(p1.z, p1.x, 1.0f, p2.z, p2.x, 1.0f, p3.z, p3.x, 1.0f);
 	mat3 R03 = mat3(p1.x, p1.y, 1.0f, p2.x, p2.y, 1.0f, p3.x, p3.y, 1.0f);
-		 
+
 	mat3 R11 = mat3(R.y, R.z, 1.0f, p2.y, p2.z, 1.0f, p3.y, p3.z, 1.0f);
 	mat3 R12 = mat3(R.z, R.x, 1.0f, p2.z, p2.x, 1.0f, p3.z, p3.x, 1.0f);
 	mat3 R13 = mat3(R.x, R.y, 1.0f, p2.x, p2.y, 1.0f, p3.x, p3.y, 1.0f);
-		 					   									
+
 	mat3 R21 = mat3(R.y, R.z, 1.0f, p3.y, p3.z, 1.0f, p1.y, p1.z, 1.0f);
 	mat3 R22 = mat3(R.z, R.x, 1.0f, p3.z, p3.x, 1.0f, p1.z, p1.x, 1.0f);
 	mat3 R23 = mat3(R.x, R.y, 1.0f, p3.x, p3.y, 1.0f, p1.x, p1.y, 1.0f);
-		 					   									
+
 	mat3 R31 = mat3(R.y, R.z, 1.0f, p1.y, p1.z, 1.0f, p2.y, p2.z, 1.0f);
 	mat3 R32 = mat3(R.z, R.x, 1.0f, p1.z, p1.x, 1.0f, p2.z, p2.x, 1.0f);
 	mat3 R33 = mat3(R.x, R.y, 1.0f, p1.x, p1.y, 1.0f, p2.x, p2.y, 1.0f);
@@ -145,90 +145,92 @@ double Test_RayPolyIntersect(const vec4& P0, const vec4& V0, const vec4& p1, con
 
 float maximum( float a, float b, float c )
 {
-   float max = ( a < b ) ? b : a;
-   return ( ( max < c ) ? c : max );
+	float max = ( a < b ) ? b : a;
+	return ( ( max < c ) ? c : max );
 }
 float minimum( float a, float b, float c )
 {	
-   float max = ( a > b ) ? b : a;
-   return ( ( max > c ) ? c : max );
+	float max = ( a > b ) ? b : a;
+	return ( ( max > c ) ? c : max );
 }
 double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4& normal) {
-  // TODO fill this in.
-  // See the documentation of this function in stubs.h.
+	// TODO fill this in.
+	// See the documentation of this function in stubs.h.
 
-  //Invert T matrix;
-  mat4 inverseT = inverse(T);
-  
-  //Transform ray with inverse matrix
-  vec4 rayOrigin    = inverseT * P0;    //Replaces P0
-  vec4 rayDirection = inverseT * V0; //Replaces V0
-    
-  //rayOrigin    = T * P0;    //Replaces P0
-  //rayDirection = T * V0; //Replaces V0
-  float signOfx;
-  float signOfy;
-  float signOfz;
+	//Invert T matrix;
+	mat4 inverseT = inverse(T);
 
-  if (rayOrigin.x <= 0) signOfx = 1; else signOfx = -1;
-  if (rayOrigin.y <= 0) signOfy = 1; else signOfy = -1;
-  if (rayOrigin.z <= 0) signOfz = 1; else signOfz = -1;
+	//Transform ray with inverse matrix
+	vec4 rayOrigin    = inverseT * P0;    //Replaces P0
+	vec4 rayDirection = inverseT * V0; //Replaces V0
 
+	//rayOrigin    = T * P0;    //Replaces P0
+	//rayDirection = T * V0; //Replaces V0
+	float signOfx;
+	float signOfy;
+	float signOfz;
 
-  float nearx = (signOfx * -0.5 - rayOrigin.x )/(rayDirection.x);
-  float neary = (signOfy * -0.5 - rayOrigin.y )/(rayDirection.y);
-  float nearz = (signOfz * -0.5 - rayOrigin.z )/(rayDirection.z);
-
-  float farx  = (signOfx * +0.5 - rayOrigin.x )/(rayDirection.x);
-  float fary  = (signOfy * +0.5 - rayOrigin.y )/(rayDirection.y);
-  float farz  = (signOfz * +0.5 - rayOrigin.z )/(rayDirection.z);
+	if (rayOrigin.x <= 0) signOfx = 1; else signOfx = -1;
+	if (rayOrigin.y <= 0) signOfy = 1; else signOfy = -1;
+	if (rayOrigin.z <= 0) signOfz = 1; else signOfz = -1;
 
 
-  
-  if (rayDirection.x == 0 && abs(rayOrigin.x) <= 0.5) {
-    nearx = INT_MIN;
-    farx  = INT_MAX;
-  }
+	float nearx = (signOfx * -0.5 - rayOrigin.x )/(rayDirection.x);
+	float neary = (signOfy * -0.5 - rayOrigin.y )/(rayDirection.y);
+	float nearz = (signOfz * -0.5 - rayOrigin.z )/(rayDirection.z);
 
-  if (rayDirection.y == 0 && abs(rayOrigin.y) <= 0.5) {
-    neary = INT_MIN;
-    fary  = INT_MAX;
-  }
-
-  if (rayDirection.z == 0 && abs(rayOrigin.y) <= 0.5) {
-    nearz = INT_MIN;
-    farz  = INT_MAX;
-  }
-
-  float near = maximum(nearx, neary, nearz);
-  float far  = minimum(farx , fary , farz );
-
-  //Calculate normals
-  if(near <= far)
-  {
-    //Check if x is closest
-    if(nearx < neary && nearx < nearz)
-      normal = vec4(1,0,0,1);
-    else if(neary < nearx && neary < nearz)
-      normal = vec4(0,1,0,1);
-    else if(nearz < nearx && nearz < neary)
-      normal = vec4(0,0,1,1);
-    return near;
-  }
-  else
-  {
-    if(farx < fary && farx < farz)
-      normal = vec4(-1,0,0,1);
-    else if(fary < farx && neary < farz)
-      normal = vec4(0,-1,0,1);
-    else if(farz < farx && farz < fary)
-      normal = vec4(0,0,-1,1);
-    return -1;
-  }
+	float farx  = (signOfx * +0.5 - rayOrigin.x )/(rayDirection.x);
+	float fary  = (signOfy * +0.5 - rayOrigin.y )/(rayDirection.y);
+	float farz  = (signOfz * +0.5 - rayOrigin.z )/(rayDirection.z);
 
 
-  /*if (near <= far)
-    return near;
 
-  return -1;*/
+	if (rayDirection.x == 0 && abs(rayOrigin.x) <= 0.5) {
+		nearx = INT_MIN;
+		farx  = INT_MAX;
+	}
+
+	if (rayDirection.y == 0 && abs(rayOrigin.y) <= 0.5) {
+		neary = INT_MIN;
+		fary  = INT_MAX;
+	}
+
+	if (rayDirection.z == 0 && abs(rayOrigin.y) <= 0.5) {
+		nearz = INT_MIN;
+		farz  = INT_MAX;
+	}
+
+	float near = maximum(nearx, neary, nearz);
+	float far  = minimum(farx , fary , farz );
+
+	//Calculate normals
+	if(near <= far)
+	{
+		vec4 intersectionPoint = near * rayDirection + rayOrigin;
+
+			
+		//Check if x is closest
+		if(intersectionPoint.x == 0.5)
+			normal = vec4(1,0,0,0);
+		else if (intersectionPoint.x == -0.5)
+			normal = vec4(-1,0,0,0);
+		else if (intersectionPoint.y ==  0.5)
+			normal = vec4(0,1,0,0);
+		else if (intersectionPoint.y == -0.5)
+			normal = vec4(0,-1,0,0);
+		else if (intersectionPoint.z ==  0.5)
+			normal = vec4(0,0,1,0);
+		else if (intersectionPoint.z == -0.5)
+			normal = vec4(0,0,-1,0);
+
+
+		if (length(normal) > 1.0)
+			normal = vec4(0,0,0,0);
+
+		return near;
+	}
+
+
+
+	return -1;
 }

@@ -153,6 +153,12 @@ float minimum( float a, float b, float c )
 	float max = ( a > b ) ? b : a;
 	return ( ( max > c ) ? c : max );
 }
+
+
+bool floatCompare(float f1, float f2, float maxdiff) {
+	return abs(f1 - f2) < maxdiff;
+}
+
 double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4& normal) {
 	// TODO fill this in.
 	// See the documentation of this function in stubs.h.
@@ -203,29 +209,51 @@ double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4
 	float near = maximum(nearx, neary, nearz);
 	float far  = minimum(farx , fary , farz );
 
+	
 	//Calculate normals
 	if(near <= far)
 	{
 		vec4 intersectionPoint = near * rayDirection + rayOrigin;
 
-			
-		//Check if x is closest
-		if(intersectionPoint.x == 0.5)
-			normal = vec4(1,0,0,0);
-		else if (intersectionPoint.x == -0.5)
-			normal = vec4(-1,0,0,0);
-		else if (intersectionPoint.y ==  0.5)
-			normal = vec4(0,1,0,0);
-		else if (intersectionPoint.y == -0.5)
-			normal = vec4(0,-1,0,0);
-		else if (intersectionPoint.z ==  0.5)
-			normal = vec4(0,0,1,0);
-		else if (intersectionPoint.z == -0.5)
-			normal = vec4(0,0,-1,0);
 
+
+
+		////Check if x is closest
+		//if(intersectionPoint.x == 0.5)
+		//	normal = vec4(1,0,0,0);
+		//else if (intersectionPoint.x == -0.5)
+		//	normal = vec4(-1,0,0,0);
+		//else if (intersectionPoint.y ==  0.5)
+		//	normal = vec4(0,1,0,0);
+		//else if (intersectionPoint.y == -0.5)
+		//	normal = vec4(0,-1,0,0);
+		//else if (intersectionPoint.z ==  0.5)
+		//	normal = vec4(0,0,1,0);
+		//else if (intersectionPoint.z == -0.5)
+		//	normal = vec4(0,0,-1,0);
+
+
+		float maxOffset = 0.001;
+		if(floatCompare(intersectionPoint.x, 0.5, maxOffset))
+			normal = vec4(1,0,0,0);
+		else if (floatCompare(intersectionPoint.x, -0.5, maxOffset))
+			normal = vec4(-1,0,0,0);
+		else if (floatCompare(intersectionPoint.y, 0.5, maxOffset))
+			normal = vec4(0,1,0,0);
+		else if (floatCompare(intersectionPoint.y, 0.5, maxOffset))
+			normal = vec4(0,-1,0,0);
+		else if (floatCompare(intersectionPoint.z, 0.5, maxOffset))
+			normal = vec4(0,0,1,0);
+		else if (floatCompare(intersectionPoint.z, -0.5, maxOffset))
+			normal = vec4(0,0,-1,0);
 
 		if (length(normal) > 1.0)
 			normal = vec4(0,0,0,0);
+		else {
+			normal = T * normal;
+			normal = normalize(normal);
+		}
+
 
 		return near;
 	}

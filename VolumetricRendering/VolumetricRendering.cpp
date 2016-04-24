@@ -44,15 +44,15 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 	float t = 255485245454; //infinity 
 	int maxDepth = 5;
 
-	//float t1 = Test_RaySphereIntersect(ray.pos, ray.dir, sphere.mat);
+	float t1 = Test_RaySphereIntersect(ray.pos, ray.dir, sphere.mat);
 
 
-	float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat);
+	//float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat);
 
 	//float t1 = Test_RayPolyIntersect(ray.pos, ray.dir, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),cube.mat);
 
 	vec4 normal = vec4(0,0,0,1);
-	float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat, normal);
+	//float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat, normal);
 
 	if(t1 != -1 && t1 < t){
 		t = t1;
@@ -64,7 +64,7 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 
 		vec4 intersectionPosition = t * ray.dir + ray.pos;
 				
-		//vec4 normalOfSphere = normalize(intersectionPosition - sphere.center);
+		vec4 normalOfSphere = normalize(intersectionPosition - sphere.center);
 		pixelCol = getLightColor(intersectionPosition, normal);
 		//update pixel color
 		if (cube.reflective > 0 && depth < maxDepth){

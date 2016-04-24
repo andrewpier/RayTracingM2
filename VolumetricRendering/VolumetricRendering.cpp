@@ -49,18 +49,10 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 
 	//float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat);
 
-	vec4 normal = vec4(0,0,0,1);
+	vec4 normal = vec4(0,0,0,0);
 	float t1 = Test_RayPolyIntersect(ray.pos, ray.dir, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),tri.mat,normal);
 
-	
 	//float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat, normal);
-
-
-	//float t1 = Test_RayPolyIntersect(ray.pos, ray.dir, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),cube.mat);
-
-	vec4 normal = vec4(0,0,0,0);
-	float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat, normal);
-
 
 	if(t1 != -1 && t1 < t){
 		t = t1;

@@ -61,7 +61,7 @@ public:
 
 		u = cross(n,(vec3(0,1,0)));
 		up = cross(u,n);
-		normalize(u);
+		glm::normalize(u);
 
 		M = eye + n;
 		float rad = (fov*pi)/180.0f; 

@@ -165,10 +165,6 @@ float minimum( float a, float b, float c )
 }
 
 
-bool floatCompare(float f1, float f2, float maxdiff) {
-	return abs(f1 - f2) < maxdiff;
-}
-
 double Test_RayCubeIntersect(const vec4& P0, const vec4& V0, const mat4& T, vec4& normal) {
 	// TODO fill this in.
 	// See the documentation of this function in stubs.h.

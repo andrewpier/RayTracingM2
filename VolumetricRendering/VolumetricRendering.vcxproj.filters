@@ -112,15 +112,6 @@
     <Text Include="test1.txt">
       <Filter>Resource Files\new</Filter>
     </Text>
-    <Text Include="mine1.txt">
-      <Filter>Resource Files\Mine</Filter>
-    </Text>
-    <Text Include="mine2.txt">
-      <Filter>Resource Files\Mine</Filter>
-    </Text>
-    <Text Include="mine3.txt">
-      <Filter>Resource Files\Mine</Filter>
-    </Text>
     <Text Include="configfiles\cube003.txt">
       <Filter>Resource Files\18ConfigFiles</Filter>
     </Text>

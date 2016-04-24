@@ -165,6 +165,24 @@
     <ClCompile Include="VoxelBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="configfiles\cube-300.txt" />
+    <Text Include="configfiles\cube003.txt" />
+    <Text Include="configfiles\cube111.txt" />
+    <Text Include="configfiles\cubeT-300.txt" />
+    <Text Include="configfiles\cubeT003.txt" />
+    <Text Include="configfiles\cubeT111.txt" />
+    <Text Include="configfiles\sphere-300.txt" />
+    <Text Include="configfiles\sphere003.txt" />
+    <Text Include="configfiles\sphere111.txt" />
+    <Text Include="configfiles\sphereT-300.txt" />
+    <Text Include="configfiles\sphereT003.txt" />
+    <Text Include="configfiles\sphereT111.txt" />
+    <Text Include="configfiles\tri-300.txt" />
+    <Text Include="configfiles\tri003.txt" />
+    <Text Include="configfiles\tri111.txt" />
+    <Text Include="configfiles\triT-300.txt" />
+    <Text Include="configfiles\triT003.txt" />
+    <Text Include="configfiles\triT111.txt" />
     <Text Include="mine1.txt" />
     <Text Include="mine2.txt" />
     <Text Include="mine3.txt" />

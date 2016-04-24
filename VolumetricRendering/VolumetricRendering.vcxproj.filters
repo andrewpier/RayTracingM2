@@ -31,6 +31,9 @@
     <Filter Include="Resource Files\oldShader">
       <UniqueIdentifier>{b77267d7-a0c0-46e1-9380-912bea367e1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\18ConfigFiles">
+      <UniqueIdentifier>{a10e15e0-fb2f-47a5-8fe8-30ae14791221}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumetricRendering.h">
@@ -117,6 +120,60 @@
     </Text>
     <Text Include="mine3.txt">
       <Filter>Resource Files\Mine</Filter>
+    </Text>
+    <Text Include="configfiles\cube003.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\cube111.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\cube-300.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\cubeT003.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\cubeT111.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\cubeT-300.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\sphere003.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\sphere111.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\sphere-300.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\sphereT003.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\sphereT111.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\sphereT-300.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\tri003.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\tri111.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\tri-300.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\triT003.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\triT111.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="configfiles\triT-300.txt">
+      <Filter>Resource Files\18ConfigFiles</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>

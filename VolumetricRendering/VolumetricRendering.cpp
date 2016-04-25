@@ -1,6 +1,8 @@
 /*
-this is the header for he volumertic rendering class
-just give me an A Zared.
+Authors: Andrew Pier, Sam Gill, Garth Murray
+Date: 4/24/16
+Description: Volume Renderer that uses raytracing
+to create images containing objects of various types
 */
 
 #include "VolumetricRendering.h"
@@ -44,32 +46,50 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 	float t = 255485245454; //infinity 
 	int maxDepth = 5;
 
-	//float t1 = Test_RaySphereIntersect(ray.pos, ray.dir, sphere.mat);
+	vec4 normalTri = vec4(0,0,0,0);
+	vec4 normalCube = vec4(0,0,0,0);
+	//For triangles
+	float t1 = Test_RayPolyIntersect(ray.pos, ray.dir, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),tri.mat,normalTri);
+	//For cubes
+	float t2 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat, normalCube);
+	//For spheres
+	float t3 = Test_RaySphereIntersect(ray.pos, ray.dir, sphere.mat);
 
-
-	//float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat);
-
-	vec4 normal = vec4(0,0,0,0);
-	float t1 = Test_RayPolyIntersect(ray.pos, ray.dir, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),tri.mat,normal);
-
-	//float t1 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat, normal);
-
-	if(t1 != -1 && t1 < t){
-		t = t1;
-		//set nearest geo
+	if(cam->camType == "tri")
+	{
+		if(t1 != -1 && t1 < t)
+			t = t1;
 	}
+	else if(cam->camType == "cube")
+	{
+		if(t2 != -1 && t2 < t)
+			t = t2;
+	}
+	else if(cam->camType == "sphere")
+	{
+		if(t3 != -1 && t3 < t)
+			t = t3;
+	}
+
 	if (t != 255485245454){
 		//check shadow feelers
 
 		vec4 intersectionPosition = t * ray.dir + ray.pos;
 
 		//calc lighting
-		//vec4 normalOfSphere = normalize(intersectionPosition - sphere.center);
-
-
+		vec4 normalOfSphere = normalize(intersectionPosition - sphere.center);
 		//normal = tri.mat * normal;
 
-		pixelCol = getLightColor(intersectionPosition, normal);
+		vec4 geoNormal = vec4(0,0,0,0);
+		//Sets normal based on geometry type
+		if(cam->camType == "tri")
+			geoNormal = normalTri;
+		else if(cam->camType == "cube")
+			geoNormal = normalCube;
+		else if(cam->camType == "sphere")
+			geoNormal = normalOfSphere;
+
+		pixelCol = getLightColor(intersectionPosition, geoNormal);
 		//update pixel color
 		if (cube.reflective > 0 && depth < maxDepth){
 			//if( depth < maxDepth){

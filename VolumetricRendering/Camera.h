@@ -29,7 +29,7 @@ using glm::normalize;
 class Camera{
 public:
 	Camera();
-	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB, vec3 _MRGB,vec3 _LPOS, vec3 _LRGB, Sphere s, Cube c, Triangle t){
+	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB, vec3 _MRGB,vec3 _LPOS, vec3 _LRGB, Sphere s, Cube c, Triangle t, string _camType){
 		eye = _Eye;
 		up = _Up; 
 		n = _view;
@@ -44,6 +44,7 @@ public:
 		MRGB = _MRGB;
 		LPOS = _LPOS;
 		LRGB = _LRGB;
+		camType = _camType;
 
 		n = normalize(vec3(0,0,0) - eye);
 
@@ -68,9 +69,6 @@ public:
 		float aspectRatio = resX/resY;
 		V = up*tan(rad);
 
-
-
-	
 		sphere = s;
 		cube = c;
 		tri = t;
@@ -130,7 +128,7 @@ public:
 		}
 
 		
-		Camera *vb = new Camera(eye,up,view, fov, resX, resY, file,delt,step, BRGB,MRGB,LPOS,LRGB,s,c,t );
+		Camera *vb = new Camera(eye,up,view, fov, resX, resY, file,delt,step, BRGB,MRGB,LPOS,LRGB,s,c,t, type);
 		read.close();
 		return vb;
 	}
@@ -138,6 +136,7 @@ public:
 	Triangle tri;
 	Cube cube;
 	string file;
+	string camType;
 	float resX, resY, fov, delt,step;
 	vec3 up, u, n, M, V, H, view, eye, BRGB,MRGB, LPOS, LRGB;
 

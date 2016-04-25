@@ -1,0 +1,20 @@
+DELT 1
+STEP 0.5
+XYZC 100 100 100
+BRGB 0.27 0.51 0.71
+MRGB 0.5 0.0 0.5
+FILE mine_triangle.bmp
+RESO 640 480
+EYEP 2 0 3
+VDIR 0 0 0
+UVEC 0 1 0
+FOVY 45
+LPOS 5 5 5
+LCOL 1 1 1
+
+1
+
+triangle
+1 1 1
+0 0 0
+90

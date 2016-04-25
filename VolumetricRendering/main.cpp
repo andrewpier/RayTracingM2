@@ -13,88 +13,38 @@
 #include "glm\glm.hpp"
 #include "VolumetricRendering.h"
 using namespace std;
-Camera* cam1;
-Camera* cam2;
-Camera* cam3;
 
-VoxelBuffer* vb1;
-VoxelBuffer* vb2;
-VoxelBuffer* vb3;
-
-VolumetricRendering* vr1;
-VolumetricRendering* vr2;
-VolumetricRendering* vr3;
-
-
+void generateImages(string configs[])
+{
+	Camera* cam;
+	VoxelBuffer* vb;
+	VolumetricRendering* vr;
+	int camNum = 0;
+	int bufNum = 0;
+	for (int i = 0; i < 18; i++)
+	{
+		cam = Camera::factory(configs[i]);
+		camNum = i + 1;
+		cout << "*******  Camera " << camNum << " Finished  *******" << endl;
+		vb = VoxelBuffer::factory(configs[i]);
+		bufNum = i + 1;
+		cout << "*******  VoelBuffer " << bufNum << " Finished  *******" << endl;
+		vr = new VolumetricRendering(vb, cam);
+		vr->Render();
+		vr->draw();
+	}
+}
 
 int main(int argc, char** argv) {
 
 	string c;
-	
-	cout << "****** Constructing Cameras ******" << endl;
-	cam1 = Camera::factory("configFiles/tri111.txt");
-	cout << "*******  Camera 1 Finished  *******" << endl;
-	cam2 = Camera::factory("configFiles/triT111.txt");
-	cout << "*******  Camera 2 Finished  *******" << endl;
-	cam3 = Camera::factory("configFiles/tri003.txt");
-	cout << "*******  Camera 3 Finished  *******\n\n";
-	/*cout << "****** Constructing Cameras ******" << endl;
-	cam1 = Camera::factory("configFiles/cube111.txt");
-	cout << "*******  Camera 4 Finished  *******" << endl;
-	cam2 = Camera::factory("configFiles/cubeT111.txt");
-	cout << "*******  Camera 5 Finished  *******" << endl;
-	cam3 = Camera::factory("configFiles/cube003.txt");
-	cout << "*******  Camera 6 Finished  *******\n\n";
-	cout << "****** Constructing Cameras ******" << endl;
-	cam1 = Camera::factory("configFiles/cube111.txt");
-	cout << "*******  Camera 7 Finished  *******" << endl;
-	cam2 = Camera::factory("configFiles/cubeT111.txt");
-	cout << "*******  Camera 8 Finished  *******" << endl;
-	cam3 = Camera::factory("configFiles/cube003.txt");
-	cout << "*******  Camera 9 Finished  *******\n\n";
-	cout << "****** Constructing Cameras ******" << endl;
-	cam1 = Camera::factory("configFiles/cube111.txt");
-	cout << "*******  Camera 10 Finished  *******" << endl;
-	cam2 = Camera::factory("configFiles/cubeT111.txt");
-	cout << "*******  Camera 11 Finished  *******" << endl;
-	cam3 = Camera::factory("configFiles/cube003.txt");
-	cout << "*******  Camera 12 Finished  *******\n\n";
-	cout << "****** Constructing Cameras ******" << endl;
-	cam1 = Camera::factory("configFiles/cube111.txt");
-	cout << "*******  Camera 13 Finished  *******" << endl;
-	cam2 = Camera::factory("configFiles/cubeT111.txt");
-	cout << "*******  Camera 14 Finished  *******" << endl;
-	cam3 = Camera::factory("configFiles/cube003.txt");
-	cout << "*******  Camera 15 Finished  *******\n\n";
-	cout << "****** Constructing Cameras ******" << endl;
-	cam1 = Camera::factory("configFiles/cube111.txt");
-	cout << "*******  Camera 16 Finished  *******" << endl;
-	cam2 = Camera::factory("configFiles/cubeT111.txt");
-	cout << "*******  Camera 17 Finished  *******" << endl;
-	cam3 = Camera::factory("configFiles/cube003.txt");
-	cout << "*******  Camera 18 Finished  *******\n\n";
-	cout << "****** Constructing VoxelBuffers ******" << endl;
-	*/
-	
-	vb1 = VoxelBuffer::factory("configFiles/tri111.txt");
-	cout << "*******  VoxelBuffer 1 Finished  *******" << endl;
-	vb2 = VoxelBuffer::factory("configFiles/triT111.txt");
-	cout << "*******  VoxelBuffer 2 Finished  *******" << endl;
-	vb3 = VoxelBuffer::factory("configFiles/tri003.txt");
 
-	cout << "*******  VoxelBuffer 3 Finished  *******\n\n";
-	cout << "*******  Generating Images  *******\n";
-
-	vr1= new VolumetricRendering(vb1,cam1);
-	vr2= new VolumetricRendering(vb2,cam2);
-	vr3= new VolumetricRendering(vb3,cam3);
-
-	vr1->Render();
-	vr1->draw();
-	vr2->Render();
-	vr2->draw();
-	vr3->Render();
-	vr3->draw();
+	string configs[] = {"configFiles/cube-300.txt","configFiles/cube003.txt","configFiles/cube111.txt","configFiles/cubeT-300.txt","configFiles/cubeT003.txt","configFiles/cubeT111.txt",
+	"configFiles/sphere-300.txt","configFiles/sphere003.txt","configFiles/sphere111.txt","configFiles/sphereT-300.txt","configFiles/sphereT003.txt","configFiles/sphereT111.txt",
+	"configFiles/tri-300.txt","configFiles/tri003.txt","configFiles/tri111.txt","configFiles/triT-300.txt","configFiles/triT003.txt","configFiles/triT111.txt"};
 	
+	generateImages(configs);
+
 	return 0;
 }
+

@@ -1,3 +1,6 @@
+/*
+Sam Gill, Garth Murray, Andrew Pier
+*/
 #pragma once
 #include <iostream>
 #include <fstream>

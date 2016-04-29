@@ -7,6 +7,11 @@
 * AND Grove City College 2015
 **/
 
+/*
+Sam Gill, Garth Murray, Andrew Pier
+*/
+
+
 #include "EasyBMP.h"
 #include "Camera.h"
 #include "VoxelBuffer.h"

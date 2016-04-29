@@ -150,6 +150,7 @@
     <ClInclude Include="EasyBMP_DataStructures.h" />
     <ClInclude Include="EasyBMP_VariousBMPutilities.h" />
     <ClInclude Include="perlin.h" />
+    <ClInclude Include="ShapeStructs.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="stubs.h" />
     <ClInclude Include="Triangle.h" />
@@ -183,6 +184,7 @@
     <Text Include="configfiles\triT-300.txt" />
     <Text Include="configfiles\triT003.txt" />
     <Text Include="configfiles\triT111.txt" />
+    <Text Include="room1.txt" />
     <Text Include="test1.txt" />
     <Text Include="test1_old.txt" />
     <Text Include="test2.txt" />

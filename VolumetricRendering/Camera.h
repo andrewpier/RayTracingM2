@@ -13,9 +13,7 @@ then can use the reay generation code to and  camera to produce the image
 #include <string>
 #include <math.h>
 #include "glm\glm.hpp"
-#include "Cube.h"
-#include "Triangle.h"
-#include "Sphere.h"
+#include "ShapeStructs.h"
 using std::string;
 using std::ifstream;
 
@@ -29,7 +27,7 @@ using glm::normalize;
 class Camera{
 public:
 	Camera();
-	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB, vec3 _MRGB,vec3 _LPOS, vec3 _LRGB, Sphere s, Cube c, Triangle t, string _camType){
+	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB, vec3 _MRGB,vec3 _LPOS, vec3 _LRGB, ShapeStructs ss[], int _num){
 		eye = _Eye;
 		up = _Up; 
 		n = _view;
@@ -39,12 +37,11 @@ public:
 		file=_file;
 		delt = _delt;
 		step= _step;
-
+		numShapes = _num;
 		BRGB = _BRGB;
 		MRGB = _MRGB;
 		LPOS = _LPOS;
 		LRGB = _LRGB;
-		camType = _camType;
 
 		n = normalize(vec3(0,0,0) - eye);
 
@@ -68,10 +65,16 @@ public:
 		float rad = (fov*pi)/180.0f; 
 		float aspectRatio = resX/resY;
 		V = up*tan(rad);
+		this->shapeStructs = new ShapeStructs[numShapes];
 
-		sphere = s;
-		cube = c;
-		tri = t;
+		for (int i = 0; i < numShapes; i++)
+		{
+			this->shapeStructs[i].c    = ss[i].c   ;   
+			this->shapeStructs[i].s	   = ss[i].s   ;	  
+			this->shapeStructs[i].t	   = ss[i].t   ;	  
+			this->shapeStructs[i].type = ss[i].type;
+		}
+
 		H.z = V.z * aspectRatio;
 		H = tan(rad) * u * aspectRatio;
 
@@ -104,34 +107,39 @@ public:
 		vec3 translate, scale;
 		float rotate;
 
-		read>>type;
-		read>>scale.x>>scale.y>>scale.z;
-		read>>translate.x>>translate.y>>translate.z;
-		read>> rotate;
-		Sphere s;
-		Cube c;
-		Triangle t;
-		if(type == "sphere"){
-			 s = Sphere(translate,rotate,scale);
-			 c = Cube(vec3(0,0,0),0,vec3(0,0,0));
-			 t = Triangle(vec3(0,0,0),0,vec3(0,0,0));
-		}
-		else if(type == "cube"){
-			 c = Cube(translate,rotate,scale);
-			 s = Sphere(vec3(0,0,0),0.0f,vec3(0,0,0));
-			 t = Triangle(vec3(0,0,0),0.0f,vec3(0,0,0));
-		}
-		else if(type == "tri"){
-			 t = Triangle(translate,rotate,scale);
-			 c = Cube(vec3(0,0,0),0,vec3(0,0,0));
-			 s = Sphere(vec3(0,0,0),0.0f,vec3(0,0,0));
+
+		ShapeStructs* shapeStructs = new ShapeStructs[num];
+
+		for (int i = 0; i < num; i++)
+		{
+			read>>type;
+			read>>scale.x>>scale.y>>scale.z;
+			read>>translate.x>>translate.y>>translate.z;
+			read>> rotate;
+			Sphere s;
+			Cube c;
+			Triangle t;
+			shapeStructs[i].type = type;
+			if(type == "sphere"){
+				shapeStructs[i].s = Sphere(translate,rotate,scale);
+			}
+			else if(type == "cube"){
+				shapeStructs[i].c = Cube(translate,rotate,scale);
+			}
+			else if(type == "tri"){
+				shapeStructs[i].t = Triangle(translate,rotate,scale);
+			}
 		}
 
+		//now allocate to the different shapes it could be
 		
-		Camera *vb = new Camera(eye,up,view, fov, resX, resY, file,delt,step, BRGB,MRGB,LPOS,LRGB,s,c,t, type);
+		Camera *vb = new Camera(eye,up,view, fov, resX, resY, file,delt,step, BRGB,MRGB,LPOS,LRGB, shapeStructs, num);
+		delete []shapeStructs;
 		read.close();
 		return vb;
 	}
+
+	ShapeStructs* shapeStructs;
 	Sphere sphere;
 	Triangle tri;
 	Cube cube;
@@ -139,7 +147,7 @@ public:
 	string camType;
 	float resX, resY, fov, delt,step;
 	vec3 up, u, n, M, V, H, view, eye, BRGB,MRGB, LPOS, LRGB;
-
+	int numShapes;
 };
 
 

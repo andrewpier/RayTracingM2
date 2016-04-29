@@ -42,63 +42,75 @@ void VolumetricRendering::Render() {
 		}
 	}
 }
+
 void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
-	float t = 255485245454; //infinity 
-	int maxDepth = 5;
 
-	vec4 normalTri = vec4(0,0,0,0);
-	vec4 normalCube = vec4(0,0,0,0);
-	//For triangles
-	float t1 = Test_RayPolyIntersect(ray.pos, ray.dir, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),tri.mat,normalTri);
-	//For cubes
-	float t2 = Test_RayCubeIntersect(ray.pos, ray.dir, cube.mat, normalCube);
-	//For spheres
-	float t3 = Test_RaySphereIntersect(ray.pos, ray.dir, sphere.mat);
-
-	if(cam->camType == "tri")
+	for (int i = 0; i < cam->numShapes; i++)
 	{
-		if(t1 != -1 && t1 < t)
-			t = t1;
-	}
-	else if(cam->camType == "cube")
-	{
-		if(t2 != -1 && t2 < t)
-			t = t2;
-	}
-	else if(cam->camType == "sphere")
-	{
-		if(t3 != -1 && t3 < t)
-			t = t3;
-	}
 
-	if (t != 255485245454){
-		//check shadow feelers
+		float t = 255485245454; //infinity 
+		int maxDepth = 5;
 
-		vec4 intersectionPosition = t * ray.dir + ray.pos;
+		vec4 normal = vec4(0,0,0,0);
 
-		//calc lighting
-		vec4 normalOfSphere = normalize(intersectionPosition - sphere.center);
-		//normal = tri.mat * normal;
+		if(cam->shapeStructs[i].type == "tri")
+			t = Test_RayPolyIntersect(ray.pos, ray.dir, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),cam->shapeStructs[i].t.mat, normal);	
+		else if(cam->shapeStructs[i].type == "cube")
+			t = Test_RayCubeIntersect(ray.pos, ray.dir, cam->shapeStructs[i].c.mat, normal);
+		else if(cam->shapeStructs[i].type == "sphere") {
+			t = Test_RaySphereIntersect(ray.pos, ray.dir, cam->shapeStructs[i].t.mat);
+		}
 
-		vec4 geoNormal = vec4(0,0,0,0);
-		//Sets normal based on geometry type
-		if(cam->camType == "tri")
-			geoNormal = normalTri;
-		else if(cam->camType == "cube")
-			geoNormal = normalCube;
-		else if(cam->camType == "sphere")
-			geoNormal = normalOfSphere;
+		if (t != 255485245454 && t != -1){
+			//check shadow feelers
+			vec4 intersectionPosition = t * ray.dir + ray.pos;
 
-		pixelCol = getLightColor(intersectionPosition, geoNormal);
-		//update pixel color
-		if (cube.reflective > 0 && depth < maxDepth){
-			//if( depth < maxDepth){
-			//Raytrace(pixelCol,glm::reflect(vec4(ray,1)),depth +1);
-			//}
+
+
+			if (cam->shapeStructs[i].type == "sphere") {
+				normal = (intersectionPosition - sphere.center);
+			}
+
+			if (shadowFeeler(intersectionPosition, i)) {
+				pixelCol = 0.3f * cam->MRGB;
+			}
+			else {
+				pixelCol = getLightColor(intersectionPosition, normal);
+			}
+			//Sets normal based on geometry type
+			//update pixel color
+			if (cube.reflective > 0 && depth < maxDepth){
+				//if( depth < maxDepth){
+				//Raytrace(pixelCol,glm::reflect(vec4(ray,1)),depth +1);
+				//}
+			}
 		}
 	}
 }
 
+bool VolumetricRendering::shadowFeeler(vec4 intersectionPoint, int index) {
+
+	vec4 rayPointToLight = vec4(cam->LPOS, 1) - intersectionPoint;
+	vec4 dummyNormal;
+	for (int i = 0; i < cam->numShapes; i++)
+	{
+		float t;
+		//means that it is the geometry itself
+		if (index == i)
+			continue;
+		if(cam->shapeStructs[i].type == "tri")
+			t = Test_RayPolyIntersect(intersectionPoint, rayPointToLight, vec4(0,.5,0,0),vec4(-0.5,0,0,0),vec4(0.5,0,0,0),cam->shapeStructs[i].t.mat, dummyNormal);	
+		else if(cam->shapeStructs[i].type == "cube")
+			t = Test_RayCubeIntersect(intersectionPoint, rayPointToLight, cam->shapeStructs[i].c.mat, dummyNormal);
+		else if(cam->shapeStructs[i].type == "sphere") {
+			t = Test_RaySphereIntersect(intersectionPoint, rayPointToLight, cam->shapeStructs[i].t.mat);
+		}
+
+		if (t < 1 && t != -1.0)
+			return true;
+	}
+	return false;
+}
 
 vec3 VolumetricRendering::getLightColor(vec4 currentPos, vec4 normalVec){
 
@@ -108,9 +120,9 @@ vec3 VolumetricRendering::getLightColor(vec4 currentPos, vec4 normalVec){
 	vec4 H = normalize((L + V));
 
 	//weights
-	float ka = 0.1;
-	float kd = 0.1;
-	float ks = 0.8;
+	float ka = 0.3;
+	float kd = 0.7;
+	float ks = 0.0;
 
 	//this needs to be passed in or something
 	vec4 N = normalVec;

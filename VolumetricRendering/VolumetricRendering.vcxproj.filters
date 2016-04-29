@@ -34,6 +34,9 @@
     <Filter Include="Resource Files\18ConfigFiles">
       <UniqueIdentifier>{a10e15e0-fb2f-47a5-8fe8-30ae14791221}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\FinalConfig">
+      <UniqueIdentifier>{6fc2c7f8-2f4e-4c2a-a4e2-78a53615cb3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumetricRendering.h">
@@ -70,6 +73,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeStructs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -165,6 +171,9 @@
     </Text>
     <Text Include="configfiles\triT-300.txt">
       <Filter>Resource Files\18ConfigFiles</Filter>
+    </Text>
+    <Text Include="room1.txt">
+      <Filter>Resource Files\FinalConfig</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>

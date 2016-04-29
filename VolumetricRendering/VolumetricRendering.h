@@ -57,6 +57,9 @@ public:
 	BMP output;
 	VoxelBuffer* vb;
 	Camera* cam;
+
+	bool shadowFeeler(vec4 ip, int index);
+
 	float kappa;
 };
 #endif

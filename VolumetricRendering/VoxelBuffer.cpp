@@ -1,6 +1,5 @@
 /*
-	this is the header for he volumertic rendering class
-	just give me an A Zared.
+Sam Gill, Garth Murray, Andrew Pier
 */
 #include "VoxelBuffer.h"
 

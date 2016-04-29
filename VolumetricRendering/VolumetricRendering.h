@@ -1,3 +1,7 @@
+/*
+Sam Gill, Garth Murray, Andrew Pier
+*/
+
 #ifndef _VOLUMETRICRENDERING_H
 #define _VOLUMETRICRENDERING_H
 

@@ -80,9 +80,13 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 			//Sets normal based on geometry type
 			//update pixel color
 			if (cube.reflective > 0 && depth < maxDepth){
-				//if( depth < maxDepth){
-				//Raytrace(pixelCol,glm::reflect(vec4(ray,1)),depth +1);
-				//}
+
+				Ray reflection = Ray();
+				if(depth == 0)
+					reflection.dir = reflect(-ray.dir,normal);
+				else
+					reflection.dir = reflect(ray.dir,normal);
+				Raytrace(pixelCol,reflection,depth + 1);
 			}
 		}
 	}
@@ -105,8 +109,8 @@ bool VolumetricRendering::shadowFeeler(vec4 intersectionPoint, int index) {
 		else if(cam->shapeStructs[i].type == "sphere") {
 			t = Test_RaySphereIntersect(intersectionPoint, rayPointToLight, cam->shapeStructs[i].t.mat);
 		}
-
-		if (t < 1 && t != -1.0)
+		//	if (res <= 1.0f+ep && res >= 1.0f - ep){
+		if (t < 1.0 && t != -1.0 )
 			return true;
 	}
 	return false;

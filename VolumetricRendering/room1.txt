@@ -2,7 +2,7 @@ DELT 1
 STEP 0.5
 XYZC 100 100 100
 BRGB 0 0 0
-FILE room1.bmp
+FILE finalImg1.bmp
 RESO 640 480
 EYEP 0 1 2
 VDIR 0 0 0
@@ -15,14 +15,14 @@ LCOL 1 1 1
 
 cube
 MRGB 0.1 0.7 0.60
-scale: 1 1 1
+scale: 2 2 2
 trans: 0 -1 0
-rotat: 0
-reflect: 0
+rotate: 45
+reflect: 1
 
 sphere
 MRGB: 1.0 0.7 0.60
 scale: 1 1 1
-trans: 0 1 -1
+trans: 0 1 -1.5
 rotate: 0
 reflect: 0

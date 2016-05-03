@@ -49,7 +49,7 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 	{
 
 		float t = 255485245454; //infinity 
-		int maxDepth = 5;
+		int maxDepth = 1;
 
 		vec4 normal = vec4(0,0,0,0);
 
@@ -68,7 +68,7 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 
 
 			if (cam->shapeStructs[i].type == "sphere") {
-				normal = (intersectionPosition - sphere.center);
+				normal = (intersectionPosition - (cam->shapeStructs[i].s.mat * sphere.center));
 			}
 
 			if (shadowFeeler(intersectionPosition, i)) {
@@ -79,6 +79,15 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 			}
 			//Sets normal based on geometry type
 			//update pixel color
+			if(cam->shapeStructs[i].type == "tri") {
+				cam->shapeStructs[i].reflect = cam->shapeStructs[i].t.reflective;
+			}
+			else if(cam->shapeStructs[i].type == "sphere") {
+				cam->shapeStructs[i].reflect = cam->shapeStructs[i].s.reflective;
+			}
+			else if(cam->shapeStructs[i].type == "cube") {
+				cam->shapeStructs[i].reflect = cam->shapeStructs[i].c.reflective;
+			}
 
 			
 			if (cam->shapeStructs[i].reflect > 0 && depth < maxDepth){
@@ -107,10 +116,11 @@ bool VolumetricRendering::shadowFeeler(vec4 intersectionPoint, int index) {
 		else if(cam->shapeStructs[i].type == "cube")
 			t = Test_RayCubeIntersect(intersectionPoint, rayPointToLight, cam->shapeStructs[i].c.mat, dummyNormal);
 		else if(cam->shapeStructs[i].type == "sphere") {
-			t = Test_RaySphereIntersect(intersectionPoint, rayPointToLight, cam->shapeStructs[i].t.mat);
+			t = Test_RaySphereIntersect(intersectionPoint, rayPointToLight, cam->shapeStructs[i].s.mat);
 		}
 		//	if (res <= 1.0f+ep && res >= 1.0f - ep){
-		if (t < 1.0 && t != -1.0 )
+		float ep = 0.001;
+		if (t < 1.0 + ep && t != -1.0 )
 			return true;
 	}
 	return false;
@@ -125,8 +135,8 @@ vec3 VolumetricRendering::getLightColor(vec4 currentPos, vec4 normalVec, vec3 MR
 
 	//weights
 	float ka = 0.3;
-	float kd = 0.7;
-	float ks = 0.0;
+	float kd = 0.5;
+	float ks = 0.2;
 
 	//this needs to be passed in or something
 	vec4 N = normalVec;
@@ -139,7 +149,7 @@ vec3 VolumetricRendering::getLightColor(vec4 currentPos, vec4 normalVec, vec3 MR
 	float h_dot_n = max(dot(H, N), 0.0f);
 
 
-	float fs_shininess = 0.5f;
+	float fs_shininess = 2.0f;
 	float blin = pow(h_dot_n, fs_shininess);
 
 

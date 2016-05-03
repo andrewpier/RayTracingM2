@@ -175,6 +175,18 @@
     <Text Include="room1.txt">
       <Filter>Resource Files\FinalConfig</Filter>
     </Text>
+    <Text Include="room2.txt">
+      <Filter>Resource Files\FinalConfig</Filter>
+    </Text>
+    <Text Include="room3.txt">
+      <Filter>Resource Files\FinalConfig</Filter>
+    </Text>
+    <Text Include="room4.txt">
+      <Filter>Resource Files\FinalConfig</Filter>
+    </Text>
+    <Text Include="room5.txt">
+      <Filter>Resource Files\FinalConfig</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="milestone4.frag">

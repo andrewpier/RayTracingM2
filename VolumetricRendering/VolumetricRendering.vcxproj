@@ -185,6 +185,10 @@
     <Text Include="configfiles\triT003.txt" />
     <Text Include="configfiles\triT111.txt" />
     <Text Include="room1.txt" />
+    <Text Include="room2.txt" />
+    <Text Include="room3.txt" />
+    <Text Include="room4.txt" />
+    <Text Include="room5.txt" />
     <Text Include="test1.txt" />
     <Text Include="test1_old.txt" />
     <Text Include="test2.txt" />

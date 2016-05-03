@@ -72,10 +72,10 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 			}
 
 			if (shadowFeeler(intersectionPosition, i)) {
-				pixelCol = 0.3f * cam->MRGB;
+				pixelCol = 0.3f * cam->shapeStructs[i].color;
 			}
 			else {
-				pixelCol = getLightColor(intersectionPosition, normal);
+				pixelCol = getLightColor(intersectionPosition, normal, cam->shapeStructs[i].color);
 			}
 			//Sets normal based on geometry type
 			//update pixel color
@@ -112,7 +112,7 @@ bool VolumetricRendering::shadowFeeler(vec4 intersectionPoint, int index) {
 	return false;
 }
 
-vec3 VolumetricRendering::getLightColor(vec4 currentPos, vec4 normalVec){
+vec3 VolumetricRendering::getLightColor(vec4 currentPos, vec4 normalVec, vec3 MRGB){
 
 	vec4 L = normalize(vec4(vec4(cam->LPOS, 1) - currentPos));
 	vec4 V = normalize(vec4(currentPos - vec4(cam->eye, 1)));
@@ -139,9 +139,9 @@ vec3 VolumetricRendering::getLightColor(vec4 currentPos, vec4 normalVec){
 	float blin = pow(h_dot_n, fs_shininess);
 
 
-	vec3 ambientColor = cam->LRGB * cam->MRGB;
-	vec3 diffuseColor = cam->LRGB * cam->MRGB * lambert;
-	vec3 sColor = blin * cam->MRGB *  cam->LRGB;
+	vec3 ambientColor = cam->LRGB * MRGB;
+	vec3 diffuseColor = cam->LRGB * MRGB * lambert;
+	vec3 sColor = blin * MRGB *  cam->LRGB;
 
 	vec3 totalColor = ka * ambientColor + kd * diffuseColor + ks * sColor; 
 

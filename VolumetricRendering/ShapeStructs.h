@@ -12,5 +12,7 @@ public:
 	Cube c;
 	Triangle t;
 	Sphere s;
+
 	string type;
+	vec3 color;
 };

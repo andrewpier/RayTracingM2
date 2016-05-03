@@ -14,6 +14,7 @@ then can use the reay generation code to and  camera to produce the image
 #include <math.h>
 #include "glm\glm.hpp"
 #include "ShapeStructs.h"
+
 using std::string;
 using std::ifstream;
 
@@ -27,7 +28,7 @@ using glm::normalize;
 class Camera{
 public:
 	Camera();
-	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB, vec3 _MRGB,vec3 _LPOS, vec3 _LRGB, ShapeStructs ss[], int _num){
+	Camera(vec3 _Eye, vec3 _Up, vec3 _view, int _fov, int _resX, int _resY, string _file, float _delt, float _step, vec3 _BRGB,vec3 _LPOS, vec3 _LRGB, ShapeStructs ss[], int _num){
 		eye = _Eye;
 		up = _Up; 
 		n = _view;
@@ -39,7 +40,6 @@ public:
 		step= _step;
 		numShapes = _num;
 		BRGB = _BRGB;
-		MRGB = _MRGB;
 		LPOS = _LPOS;
 		LRGB = _LRGB;
 
@@ -69,10 +69,11 @@ public:
 
 		for (int i = 0; i < numShapes; i++)
 		{
-			this->shapeStructs[i].c    = ss[i].c   ;   
-			this->shapeStructs[i].s	   = ss[i].s   ;	  
-			this->shapeStructs[i].t	   = ss[i].t   ;	  
-			this->shapeStructs[i].type = ss[i].type;
+			this->shapeStructs[i].c     = ss[i].c   ;   
+			this->shapeStructs[i].s	    = ss[i].s   ;	  
+			this->shapeStructs[i].t	    = ss[i].t   ;	  
+			this->shapeStructs[i].type  = ss[i].type;
+			this->shapeStructs[i].color = ss[i].color;
 		}
 
 		H.z = V.z * aspectRatio;
@@ -87,13 +88,12 @@ public:
 		float delt;
 		int num;
 
-		vec3 up, view, eye, BRGB,MRGB, LPOS, LRGB;
+		vec3 up, view, eye, BRGB, LPOS, LRGB;
 		float resX, resY, fov,step;
 		read>>garbage>>delt;
 		read>>garbage>>step;
 		read>>garbage>>garbage>>garbage>>garbage;
 		read>>garbage>>BRGB.x>>BRGB.y>>BRGB.z;
-		read>>garbage>>MRGB.x>>MRGB.y>>MRGB.z;
 		read>>garbage>>file;
 		read>>garbage>>resX>>resY;
 		read>>garbage>>eye.x>>eye.y>>eye.z;
@@ -112,7 +112,9 @@ public:
 
 		for (int i = 0; i < num; i++)
 		{
+			vec3 MRGB;
 			read>>type;
+			read>>garbage>>MRGB.x>>MRGB.y>>MRGB.z;
 			read>>scale.x>>scale.y>>scale.z;
 			read>>translate.x>>translate.y>>translate.z;
 			read>> rotate;
@@ -120,6 +122,7 @@ public:
 			Cube c;
 			Triangle t;
 			shapeStructs[i].type = type;
+			shapeStructs[i].color = MRGB;
 			if(type == "sphere"){
 				shapeStructs[i].s = Sphere(translate,rotate,scale);
 			}
@@ -132,8 +135,8 @@ public:
 		}
 
 		//now allocate to the different shapes it could be
-		
-		Camera *vb = new Camera(eye,up,view, fov, resX, resY, file,delt,step, BRGB,MRGB,LPOS,LRGB, shapeStructs, num);
+
+		Camera *vb = new Camera(eye,up,view, fov, resX, resY, file,delt,step, BRGB,LPOS,LRGB, shapeStructs, num);
 		delete []shapeStructs;
 		read.close();
 		return vb;
@@ -146,7 +149,7 @@ public:
 	string file;
 	string camType;
 	float resX, resY, fov, delt,step;
-	vec3 up, u, n, M, V, H, view, eye, BRGB,MRGB, LPOS, LRGB;
+	vec3 up, u, n, M, V, H, view, eye, BRGB, LPOS, LRGB;
 	int numShapes;
 };
 

@@ -78,7 +78,7 @@ public:
 		read>>garbage>>garbage>>garbage>>garbage;
 		read>>garbage>>garbage;
 		read>>garbage>>garbage>>garbage;
-		read>>garbage>>garbage>>garbage>>garbage;
+		//read>>garbage>>garbage>>garbage>>garbage;
 		read>>garbage>>garbage>>garbage>>garbage;
 		read>>garbage>>garbage>>garbage>>garbage;
 		read>>garbage>>garbage;

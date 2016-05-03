@@ -50,7 +50,7 @@ public:
 
 	void Render();
 	
-	vec3 VolumetricRendering::getLightColor(vec4 pos, vec4 n);
+	vec3 VolumetricRendering::getLightColor(vec4 currentPos, vec4 normalVec, vec3 MRGB);
 	void Raytrace(vec3& pixelCol, Ray ray, int depth);
 	Sphere sphere;
 	Cube cube;

@@ -115,10 +115,10 @@ public:
 			vec3 MRGB;
 			read>>type;
 			read>>garbage>>MRGB.x>>MRGB.y>>MRGB.z;
-			read>>scale.x>>scale.y>>scale.z;
-			read>>translate.x>>translate.y>>translate.z;
-			read>> rotate;
-			read>>reflect;
+			read>>garbage>>scale.x>>scale.y>>scale.z;
+			read>>garbage>>translate.x>>translate.y>>translate.z;
+			read>>garbage>>rotate;
+			read>>garbage>>reflect;
 			Sphere s;
 			Cube c;
 			Triangle t;

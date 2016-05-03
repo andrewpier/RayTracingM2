@@ -15,14 +15,14 @@ LCOL 1 1 1
 
 cube
 MRGB 0.1 0.7 0.60
-1 1 1
-0 -1 0
-0
-0
+scale: 1 1 1
+trans: 0 -1 0
+rotat: 0
+reflect: 0
 
 sphere
-MRGB 1.0 0.7 0.60
-1 1 1
-0 1 -1
-0
-0
+MRGB: 1.0 0.7 0.60
+scale: 1 1 1
+trans: 0 1 -1
+rotate: 0
+reflect: 0

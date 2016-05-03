@@ -80,9 +80,7 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 			//Sets normal based on geometry type
 			//update pixel color
 
-			if (cam->shapeStructs[i].type == "cube") {
-				cam->shapeStructs[i].reflect = 1;
-			}
+			
 			if (cam->shapeStructs[i].reflect > 0 && depth < maxDepth){
 				Ray reflection = Ray();
 				

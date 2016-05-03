@@ -16,11 +16,13 @@ public:
 	vec4 points[3];
 	vec3 colors[3];
 	mat4 mat;
+	int reflective;
 	Triangle() {
 		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1));
 
 	}
-	Triangle(vec3 T, float R, vec3 S) {
+	Triangle(vec3 T, float R, vec3 S, int r) {
+		reflective = r;
 		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1)) * translate(vec4(T,0)) * rotate(R) * scale(S);
 	}
 

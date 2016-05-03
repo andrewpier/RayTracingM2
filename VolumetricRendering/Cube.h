@@ -44,8 +44,8 @@ public:
 	}
 
 
-	 Cube(vec3 T, float R, vec3 S) {
-		reflective =0;
+	 Cube(vec3 T, float R, vec3 S, int r) {
+		reflective = r;
 		mat = mat4(vec4(1,0,0,0),vec4(0,1,0,0),vec4(0,0,1,0),vec4(0,0,0,1)) * translate(vec4(T,0)) * rotate(R) * scale(S);
 
 	}

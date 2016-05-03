@@ -109,7 +109,7 @@ public:
 
 
 		ShapeStructs* shapeStructs = new ShapeStructs[num];
-
+		int reflect;
 		for (int i = 0; i < num; i++)
 		{
 			vec3 MRGB;
@@ -118,19 +118,20 @@ public:
 			read>>scale.x>>scale.y>>scale.z;
 			read>>translate.x>>translate.y>>translate.z;
 			read>> rotate;
+			read>>reflect;
 			Sphere s;
 			Cube c;
 			Triangle t;
 			shapeStructs[i].type = type;
 			shapeStructs[i].color = MRGB;
 			if(type == "sphere"){
-				shapeStructs[i].s = Sphere(translate,rotate,scale);
+				shapeStructs[i].s = Sphere(translate,rotate,scale,reflect);
 			}
 			else if(type == "cube"){
-				shapeStructs[i].c = Cube(translate,rotate,scale);
+				shapeStructs[i].c = Cube(translate,rotate,scale,reflect);
 			}
 			else if(type == "tri"){
-				shapeStructs[i].t = Triangle(translate,rotate,scale);
+				shapeStructs[i].t = Triangle(translate,rotate,scale,reflect);
 			}
 		}
 

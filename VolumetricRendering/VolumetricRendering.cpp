@@ -58,7 +58,7 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 		else if(cam->shapeStructs[i].type == "cube")
 			t = Test_RayCubeIntersect(ray.pos, ray.dir, cam->shapeStructs[i].c.mat, normal);
 		else if(cam->shapeStructs[i].type == "sphere") {
-			t = Test_RaySphereIntersect(ray.pos, ray.dir, cam->shapeStructs[i].t.mat);
+			t = Test_RaySphereIntersect(ray.pos, ray.dir, cam->shapeStructs[i].s.mat);
 		}
 
 		if (t != 255485245454 && t != -1){
@@ -79,13 +79,15 @@ void VolumetricRendering::Raytrace(vec3& pixelCol, Ray ray, int depth){
 			}
 			//Sets normal based on geometry type
 			//update pixel color
-			if (cube.reflective > 0 && depth < maxDepth){
 
+			if (cam->shapeStructs[i].type == "cube") {
+				cam->shapeStructs[i].reflect = 1;
+			}
+			if (cam->shapeStructs[i].reflect > 0 && depth < maxDepth){
 				Ray reflection = Ray();
-				if(depth == 0)
-					reflection.dir = reflect(-ray.dir,normal);
-				else
-					reflection.dir = reflect(ray.dir,normal);
+				
+				reflection.dir = reflect(ray.dir,normal);
+				reflection.pos = intersectionPosition;
 				Raytrace(pixelCol,reflection,depth + 1);
 			}
 		}

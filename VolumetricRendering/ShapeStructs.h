@@ -15,4 +15,5 @@ public:
 
 	string type;
 	vec3 color;
+	int reflect;
 };

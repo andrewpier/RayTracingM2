@@ -2,7 +2,7 @@ DELT 1
 STEP 0.5
 XYZC 100 100 100
 BRGB 0 0 0
-FILE finalImg3.bmp
+FILE final3.bmp
 RESO 640 480
 EYEP 0 1 2
 VDIR 0 0 0
@@ -17,7 +17,7 @@ tri
 MRGB 0.1 0.7 0.60
 scale: 4 4 4
 trans: -1 0 -1
-rotate: 0 58 0
+rotate: 0 83 0
 reflect: 1
 
 sphere

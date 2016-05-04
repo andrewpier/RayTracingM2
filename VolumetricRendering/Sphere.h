@@ -46,14 +46,16 @@ public:
 		float rX = Rad(v.x);
 		float rY = Rad(v.y);
 		float rZ = Rad(v.z);
-		mat4 rotateX = mat4(vec4(1,0,0,0),vec4(0,cos(rX),-sin(rX),0),vec4(0,sin(rX),cos(rX),0),vec4(0,0,0,1));
+
+		mat4 rotateX = mat4(vec4(1,0,0,0),vec4(0,cos(rX),sin(rX),0),vec4(0,-sin(rX),cos(rX),0),vec4(0,0,0,1));
+
 		mat4 rotateY = mat4( vec4(cos(rY),0,-sin(rY),0), vec4(0,1,0,0), vec4(sin(rY),0,cos(rY),0), vec4(0,0,0,1) );
-		mat4 rotateZ = mat4(vec4(cos(rZ),-sin(rX),0,0),vec4(sin(rZ),cos(rZ),0,0),vec4(0,0,0,1), vec4(0,0,0,1));
+
+		mat4 rotateZ = mat4(vec4(cos(rZ),sin(rX),0,0),vec4(-sin(rZ),cos(rZ),0,0),vec4(0,0,1,0), vec4(0,0,0,1));
 		
 		return rotateZ * rotateY * rotateX;
 	}
 	float Rad(float r){
-		return r/180.0f * 3.1415962;
+		return r/180.0f * 3.1415926;
 	}
-
 };

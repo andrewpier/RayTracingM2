@@ -17,7 +17,7 @@ cube or tri or sphere
 MRGB: 1.0 0.7 0.60 //material color
 scale: .5 .5 .5
 trans: 0 1 -1.5
-rotate: 45
+rotate: 0 45 0
 reflect: 0
 
 

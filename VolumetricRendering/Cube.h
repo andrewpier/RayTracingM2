@@ -72,6 +72,6 @@ public:
 		return rotateZ * rotateY * rotateX;
 	}
 	float Rad(float r){
-		return r/180.0f * 3.1415962;
+		return r/180.0f * 3.1415926;
 	}
 };

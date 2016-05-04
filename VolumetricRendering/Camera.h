@@ -124,14 +124,15 @@ public:
 			Triangle t;
 			shapeStructs[i].type = type;
 			shapeStructs[i].color = MRGB;
+			float rad = rotate/180.0f * 3.1415962;
 			if(type == "sphere"){
-				shapeStructs[i].s = Sphere(translate,rotate,scale,reflect);
+				shapeStructs[i].s = Sphere(translate,rad,scale,reflect);
 			}
 			else if(type == "cube"){
-				shapeStructs[i].c = Cube(translate,rotate,scale,reflect);
+				shapeStructs[i].c = Cube(translate,rad,scale,reflect);
 			}
 			else if(type == "tri"){
-				shapeStructs[i].t = Triangle(translate,rotate,scale,reflect);
+				shapeStructs[i].t = Triangle(translate,rad,scale,reflect);
 			}
 		}
 

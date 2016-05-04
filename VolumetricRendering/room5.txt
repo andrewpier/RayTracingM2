@@ -8,19 +8,21 @@ EYEP 0 1 2
 VDIR 0 0 0
 UVEC 0 1 0
 FOVY 45
-LPOS 3 1 2
+LPOS 1 1 -1
 LCOL 1 1 1
 
 2
 
-cube
-MRGB 0.1 0.7 0.60
-1 1 1
-0 0 0
-45
-
 tri
-MRGB 1.0 0.7 0.60
-0.5 0.5 0.5
-1 0 0
-45
+MRGB 0.1 0.7 0.60
+scale: 3 3 3
+trans: -1 0 -1
+rotate: 60
+reflect: 1
+
+cube
+MRGB: 1.0 0.2 0.40
+scale: 0.5 0.5 0.5
+trans: -0.5 0 0
+rotate: 58
+reflect: 1

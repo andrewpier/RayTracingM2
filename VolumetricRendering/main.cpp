@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 
 	string c;
 
-	string configs[] = { "room2.txt" };/*,"configFiles/cube003.txt","configFiles/cube111.txt","configFiles/cubeT-300.txt","configFiles/cubeT003.txt","configFiles/cubeT111.txt",
+	string configs[] = { "room5.txt" };/*,"configFiles/cube003.txt","configFiles/cube111.txt","configFiles/cubeT-300.txt","configFiles/cubeT003.txt","configFiles/cubeT111.txt",
 	"configFiles/sphere-300.txt","configFiles/sphere003.txt","configFiles/sphere111.txt","configFiles/sphereT-300.txt","configFiles/sphereT003.txt","configFiles/sphereT111.txt",
 	"configFiles/tri-300.txt","configFiles/tri003.txt","configFiles/tri111.txt","configFiles/triT-300.txt","configFiles/triT003.txt","configFiles/triT111.txt"};*/
 	

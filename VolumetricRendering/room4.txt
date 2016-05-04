@@ -17,19 +17,19 @@ cube
 MRGB 0.1 0.5 0.80
 scale: 1 1 1
 trans: 0 0 0
-rotate: 45
+rotate: 0 45 0
 reflect: 1
 
 tri
 MRGB: 0.4 1.0 0.4
 scale: 1 1 1
 trans: 1 0 0.5
-rotate: 58
+rotate: 0 58 0
 reflect: 0
 
 sphere
 MRGB: 1.0 0.3 0.5
 scale: 0.5 0.5 0.5
 trans: -1 -0.25 1
-rotate: 58
+rotate: 0 58 0
 reflect: 0

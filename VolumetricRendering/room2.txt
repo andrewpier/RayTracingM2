@@ -11,22 +11,25 @@ FOVY 45
 LPOS 3 1 2
 LCOL 1 1 1
 
-2
+3
 
 cube
 MRGB 0.1 0.7 0.60
-1 1 1
-0 0 0
-45
+scale: 1 1 1
+trans: 0 -1 0
+rotate: 45
+reflect: 1
 
 tri
-MRGB 1.0 0.7 0.60
-0.5 0.5 0.5
-1 0 0
-45
+MRGB: 1.0 0.7 0.60
+scale: 1 1 1
+trans: 0 1 -1.5
+rotate: 0
+reflect: 0
 
 cube
-MRGB 0.7 0.3 0.60
-2 1 -1
-0 0 0
-45
+MRGB 1.0 0.3 0.60
+scale: 1 1 1
+trans: -1 0 -1
+rotate: 58
+reflect: 0

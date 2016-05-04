@@ -4,25 +4,32 @@ XYZC 100 100 100
 BRGB 0 0 0
 FILE finalImg1.bmp
 RESO 640 480
-EYEP 0 1 2
+EYEP -1 1 6
 VDIR 0 0 0
 UVEC 0 1 0
 FOVY 45
 LPOS 3 1 2
 LCOL 1 1 1
 
-2
+3
 
-cube
+tri
 MRGB 0.1 0.7 0.60
-scale: 2 2 2
-trans: 0 -1 0
-rotate: 45
+scale: 5 5 5
+trans: 0 0 0
+rotate: 0 270 0
 reflect: 1
 
-sphere
+tri
+MRGB 0.1 0.7 0.60
+scale: 5 5 5
+trans: 0 0 0
+rotate: 0 0 0 
+reflect: 1
+
+cube
 MRGB: 1.0 0.7 0.60
 scale: 1 1 1
-trans: 0 1 -1.5
-rotate: 0
+trans: 0 -1 1
+rotate: 0 0 0
 reflect: 0

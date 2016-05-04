@@ -35,7 +35,7 @@ struct Ray {
 class VolumetricRendering{
 public:
 	VolumetricRendering(){
-		sphere = Sphere(vec3(0,0,0),0.0f,vec3(0,0,0),0);
+		sphere = Sphere(vec3(0,0,0),vec3(0,0,0),vec3(0,0,0),0);
 	}
 	VolumetricRendering(VoxelBuffer* _vb, Camera* _cam){
 		output.SetSize(_cam->resX, _cam->resY);

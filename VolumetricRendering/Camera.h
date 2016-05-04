@@ -105,7 +105,7 @@ public:
 		read >> num;
 		string type;
 		vec3 translate, scale;
-		float rotate;
+		vec3 rotate;
 
 
 		ShapeStructs* shapeStructs = new ShapeStructs[num];
@@ -117,13 +117,14 @@ public:
 			read>>garbage>>MRGB.x>>MRGB.y>>MRGB.z;
 			read>>garbage>>scale.x>>scale.y>>scale.z;
 			read>>garbage>>translate.x>>translate.y>>translate.z;
-			read>>garbage>>rotate;
+			read>>garbage>>rotate.x>>rotate.y>>rotate.z;
 			read>>garbage>>reflect;
 			Sphere s;
 			Cube c;
 			Triangle t;
 			shapeStructs[i].type = type;
 			shapeStructs[i].color = MRGB;
+			
 			if(type == "sphere"){
 				shapeStructs[i].s = Sphere(translate,rotate,scale,reflect);
 			}

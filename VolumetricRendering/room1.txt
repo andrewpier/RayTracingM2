@@ -17,7 +17,7 @@ cube
 MRGB 0.1 0.7 0.60
 scale: 2 2 2
 trans: 0 -1 0
-rotate: 0 0 0
+rotate: 0 58 0
 reflect: 1
 
 sphere
